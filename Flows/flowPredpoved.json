@@ -1,0 +1,2000 @@
+[
+    {
+        "id": "9af91d8f5de67341",
+        "type": "tab",
+        "label": "Predpoveď",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "442f53b8f2b3cec7",
+        "type": "http request",
+        "z": "9af91d8f5de67341",
+        "name": "SUN-set/rise",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=49.00&longitude=18.24&daily=sunrise,sunset&timezone=Europe%2FBerlin",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 340,
+        "wires": [
+            [
+                "b802932b2c218f9b",
+                "f097be48b593a12a",
+                "90b7c84b2dc2d2e2",
+                "bb64784614986afc",
+                "51cd2e2519fbf38d",
+                "4d53237ce73ce815",
+                "787ff5bc48c207a3",
+                "be0dab68125e3fad",
+                "b8107da450c455a7",
+                "ee6a6862bfa2f87f",
+                "4e70425e2dff38ac",
+                "2121b0cd901421d8",
+                "b1fd26f127c99972",
+                "87782de62e33ea94",
+                "2306abd0160b4d3c",
+                "5c7e1db9b398aaa2"
+            ]
+        ]
+    },
+    {
+        "id": "651d51ebb9505281",
+        "type": "inject",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "442f53b8f2b3cec7"
+            ]
+        ]
+    },
+    {
+        "id": "b802932b2c218f9b",
+        "type": "debug",
+        "z": "9af91d8f5de67341",
+        "name": "JSON obj1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "7479b6e7d1018f9f",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 7,
+        "width": 4,
+        "height": 1,
+        "name": "0",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.sunrise[1]}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1e2ce86b321fa84a",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "0",
+        "label": "Dnes",
+        "format": "{{payload.daily.sunrise[0]}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8621804b8afd9963",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "name": "0",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.sunrise[2]}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "e3e48d8f352465de",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 11,
+        "width": 4,
+        "height": 1,
+        "name": "0",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.sunrise[3]}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "2968b5e2e56322da",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 13,
+        "width": 4,
+        "height": 1,
+        "name": "0",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.sunrise[4]}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5504da98e67c58e4",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 15,
+        "width": 4,
+        "height": 1,
+        "name": "0",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.sunrise[5]}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "875e8f2db55836b8",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 17,
+        "width": 4,
+        "height": 1,
+        "name": "0",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.sunrise[6]}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b667eb59a609eb9c",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 8,
+        "width": 3,
+        "height": 1,
+        "name": "1",
+        "label": "",
+        "format": "{{payload.daily.sunset[1]}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1130,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "b29cc505bc63cdaf",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "name": "1",
+        "label": "",
+        "format": "{{payload.daily.sunset[0]}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1130,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "93228dbff8715b89",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 10,
+        "width": 3,
+        "height": 1,
+        "name": "1",
+        "label": "",
+        "format": "{{payload.daily.sunset[2]}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1130,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "4fddbb86aa34d89b",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 12,
+        "width": 3,
+        "height": 1,
+        "name": "1",
+        "label": "",
+        "format": "{{payload.daily.sunset[3]}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1130,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "7b2b8ac0e63b91a4",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 14,
+        "width": 3,
+        "height": 1,
+        "name": "1",
+        "label": "",
+        "format": "{{payload.daily.sunset[4]}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1130,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "b00a660216c8145a",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 16,
+        "width": 3,
+        "height": 1,
+        "name": "1",
+        "label": "",
+        "format": "{{payload.daily.sunset[5]}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1130,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "d5af83787082c41f",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 18,
+        "width": 3,
+        "height": 1,
+        "name": "1",
+        "label": "",
+        "format": "{{payload.daily.sunset[6]}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1130,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "f097be48b593a12a",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunset[0] = msg.payload.daily.sunset[0].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 360,
+        "wires": [
+            [
+                "b29cc505bc63cdaf"
+            ]
+        ]
+    },
+    {
+        "id": "90b7c84b2dc2d2e2",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunset[1] = msg.payload.daily.sunset[1].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 400,
+        "wires": [
+            [
+                "b667eb59a609eb9c"
+            ]
+        ]
+    },
+    {
+        "id": "bb64784614986afc",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunset[2] = msg.payload.daily.sunset[2].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 440,
+        "wires": [
+            [
+                "93228dbff8715b89"
+            ]
+        ]
+    },
+    {
+        "id": "51cd2e2519fbf38d",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunset[3] = msg.payload.daily.sunset[3].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 480,
+        "wires": [
+            [
+                "4fddbb86aa34d89b"
+            ]
+        ]
+    },
+    {
+        "id": "4d53237ce73ce815",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunset[4] = msg.payload.daily.sunset[4].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 520,
+        "wires": [
+            [
+                "7b2b8ac0e63b91a4"
+            ]
+        ]
+    },
+    {
+        "id": "787ff5bc48c207a3",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunset[5] = msg.payload.daily.sunset[5].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 560,
+        "wires": [
+            [
+                "b00a660216c8145a"
+            ]
+        ]
+    },
+    {
+        "id": "be0dab68125e3fad",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunset[6] = msg.payload.daily.sunset[6].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 600,
+        "wires": [
+            [
+                "d5af83787082c41f"
+            ]
+        ]
+    },
+    {
+        "id": "943efaacd9a3a8db",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunrise[0] = msg.payload.daily.sunrise[0].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 80,
+        "wires": [
+            [
+                "1e2ce86b321fa84a"
+            ]
+        ]
+    },
+    {
+        "id": "37bdfbfa5c361406",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunrise[1] = msg.payload.daily.sunrise[1].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 120,
+        "wires": [
+            [
+                "7479b6e7d1018f9f"
+            ]
+        ]
+    },
+    {
+        "id": "ef29ea1f32e76b0a",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunrise[2] = msg.payload.daily.sunrise[2].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 160,
+        "wires": [
+            [
+                "8621804b8afd9963"
+            ]
+        ]
+    },
+    {
+        "id": "f818f5bc59bf91cb",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunrise[3] = msg.payload.daily.sunrise[3].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 200,
+        "wires": [
+            [
+                "e3e48d8f352465de"
+            ]
+        ]
+    },
+    {
+        "id": "9eae774297aeaa5b",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunrise[4] = msg.payload.daily.sunrise[4].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 240,
+        "wires": [
+            [
+                "2968b5e2e56322da"
+            ]
+        ]
+    },
+    {
+        "id": "f61191facc46efb5",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunrise[5] = msg.payload.daily.sunrise[5].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 280,
+        "wires": [
+            [
+                "5504da98e67c58e4"
+            ]
+        ]
+    },
+    {
+        "id": "55e7fbae1d6c3ded",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "Substring",
+        "func": "msg.payload.daily.sunrise[6] = msg.payload.daily.sunrise[6].substring(11);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 320,
+        "wires": [
+            [
+                "875e8f2db55836b8"
+            ]
+        ]
+    },
+    {
+        "id": "b8107da450c455a7",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 80,
+        "wires": [
+            [
+                "943efaacd9a3a8db"
+            ]
+        ]
+    },
+    {
+        "id": "ee6a6862bfa2f87f",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "1",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 120,
+        "wires": [
+            [
+                "37bdfbfa5c361406"
+            ]
+        ]
+    },
+    {
+        "id": "4e70425e2dff38ac",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "2",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 160,
+        "wires": [
+            [
+                "ef29ea1f32e76b0a"
+            ]
+        ]
+    },
+    {
+        "id": "2121b0cd901421d8",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "3",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 200,
+        "wires": [
+            [
+                "f818f5bc59bf91cb"
+            ]
+        ]
+    },
+    {
+        "id": "b1fd26f127c99972",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "4",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 240,
+        "wires": [
+            [
+                "9eae774297aeaa5b"
+            ]
+        ]
+    },
+    {
+        "id": "87782de62e33ea94",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "5",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 280,
+        "wires": [
+            [
+                "f61191facc46efb5"
+            ]
+        ]
+    },
+    {
+        "id": "2306abd0160b4d3c",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "6",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 320,
+        "wires": [
+            [
+                "55e7fbae1d6c3ded"
+            ]
+        ]
+    },
+    {
+        "id": "f32c3b3a7fb64849",
+        "type": "http request",
+        "z": "9af91d8f5de67341",
+        "name": "MAX/MIN",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=48.99&longitude=18.22&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 300,
+        "y": 860,
+        "wires": [
+            [
+                "dcb4af158cd5b9f1",
+                "58ba59501644216e",
+                "5058e93b9ca9fabc",
+                "a274b10cdf8efe4f",
+                "e67e2566ad68d8a9",
+                "1fae08e06804ad1f",
+                "4f282204a4a76625",
+                "13a5e0bed7edb93d",
+                "5886a192a5118e0e",
+                "a7691e8f4f4bf25c",
+                "653b759b9d36c79b",
+                "3d0d16c6b9b03743",
+                "51aed00607818c31",
+                "1a72d2afbc3fe824",
+                "8a598c77d7edab9c",
+                "0e70cfba237c6fb0"
+            ]
+        ]
+    },
+    {
+        "id": "e4e4505a4826a984",
+        "type": "inject",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 110,
+        "y": 860,
+        "wires": [
+            [
+                "f32c3b3a7fb64849"
+            ]
+        ]
+    },
+    {
+        "id": "0e77c2b0089b07e1",
+        "type": "http request",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=48.99&longitude=18.22&models=best_match&daily=weathercode&timezone=Europe%2FBerlin",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 290,
+        "y": 1100,
+        "wires": [
+            [
+                "9b5210abfe21c21d",
+                "519a2b103f365c44",
+                "c0790a8e2cfccb56",
+                "f2523224a4bee3b5",
+                "953a52e99fa1c1e8",
+                "5e9d535336b39d87",
+                "82fe9ae609ccd183",
+                "24a6b0bb300080b1",
+                "6b4d32a7b0d0ce12"
+            ]
+        ]
+    },
+    {
+        "id": "b78ef0472093d986",
+        "type": "inject",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 110,
+        "y": 1100,
+        "wires": [
+            [
+                "0e77c2b0089b07e1"
+            ]
+        ]
+    },
+    {
+        "id": "24a6b0bb300080b1",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "day1",
+        "func": "var value = msg.payload.daily.weathercode[0];\nswitch (value) {\n    case 0:\n        msg.payload = \"Slnečno\";\n        break;\n    case 1:\n        msg.payload = \"Oblaky sa vo všeobecnosti rozpúšťajú\";\n        break;\n    case 2:\n        msg.payload = \"Stav oblohy celkovo nezmenený\";\n        break;\n    case 3:\n        msg.payload = \"Oblačno\";\n        break;\n//---------------------------------------------------------------------------------\n    case 4:\n        msg.payload = \"Viditeľnosť znížená dymom\";\n        break;\n    case 5:\n        msg.payload = \"Hmla\";\n        break;\n    case 6:\n        msg.payload = \"Rozšírený prach vo vzduchu\";\n        break;\n    case 7:\n        msg.payload = \"Prach alebo piesok zdvihnutý vetrom\";\n        break;\n    case 8:\n        msg.payload = \"Vyvinuté víry prachu\";\n        break;\n    case 9:\n        msg.payload = \"Prachová búrka na dohľad\";\n        break;\n//---------------------------------------------------------------------------------\n    case 10:\n        msg.payload = \"Hmla\";\n        break;\n    case 11:\n        msg.payload = \"Známky hmly\";\n        break;\n    case 12:\n        msg.payload = \"Viac-menej súvislá hmla\";\n        break;\n    case 13:\n        msg.payload = \"Viditeľné blesky, nepočuť hromy\";\n        break;\n    case 14:\n        msg.payload = \"Zrážky na dohľad\";\n        break;\n    case 15:\n        msg.payload = \"Zrážky na dohľad (odhaduje sa viac ako 5 km) od stanice\";\n        break;\n    case 16:\n        msg.payload = \"Zrážky na dohľad, blízko stanice\";\n        break;\n    case 17:\n        msg.payload = \"Búrky, ale bez zrážok v čase pozorovania\";\n        break;\n    case 18:\n        msg.payload = \"Búrky v čase pozorovania\";\n        break;\n    case 19:\n        msg.payload = \"Lievikový oblak\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 20:\n        msg.payload = \"Mrholenie alebo sneženie\";\n        break;\n    case 21:\n        msg.payload = \"Dážď\";\n        break;\n    case 22:\n        msg.payload = \"Sneh\";\n        break;\n    case 23:\n        msg.payload = \"Dážďové a snehové alebo ľadové pelety\";\n        break;\n    case 24:\n        msg.payload = \"Mrznúce mrholenie alebo mrznúci dážď\";\n        break;\n    case 25:\n        msg.payload = \"Dažďové prehánky\";\n        break;\n    case 26:\n        msg.payload = \"Snehové prehánky alebo dážď a sneh\";\n        break;\n    case 27:\n        msg.payload = \"Prehánky s krúpami\";\n        break;\n    case 28:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 29:\n        msg.payload = \"Búrka\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 30:\n        msg.payload = \"Mierna alebo stredná prašná búrka\";\n        break;\n    case 31:\n        msg.payload = \"Mierna alebo stredná prachová búrka – žiadna znateľná zmena\";\n        break;\n    case 32:\n        msg.payload = \"Mierna alebo stredná prachová – začala alebo sa zvýšila\";\n        break;\n    case 33:\n        msg.payload = \"Silná prachová búrka – znížila sa\";\n        break;\n    case 34:\n        msg.payload = \"Silná prachová búrka – žiadna výrazná zmena\";\n        break;\n    case 35:\n        msg.payload = \"Silná prachová búrka - začala alebo sa zvýšila\";\n        break;\n    case 36:\n        msg.payload = \"Slabo alebo mierne fúkajúci sneh vo všeobecnosti nízko\";\n        break;\n    case 37:\n        msg.payload = \"Ťažký nános snehu\";\n        break;\n    case 38:\n        msg.payload = \"Slabo alebo mierne fúkané sneženie vo všeobecnosti vysoké\";\n        break;\n    case 39:\n        msg.payload = \"Ťažký sneh vo všeobecnosti vysoký\";\n        break;\n//---------------------------------------------------------------------------------\n    case 40:\n    case 41:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 42:\n        msg.payload = \"Hmla alebo ľadová hmla, viditeľná obloha\";\n        break;\n    case 43:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu\";\n        break;\n    case 44:\n        msg.payload = \"Hmla alebo ľadová hmla, obloha viditeľná bez výrazných zmien\";\n        break;\n    case 45:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu, žiadna výrazná zmena\";\n        break;\n    case 46:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, obloha je viditeľná alebo zhustla\";\n        break;\n    case 47:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, nevidno oblohu, alebo zhustla\";\n        break;\n    case 48:\n        msg.payload = \"Hmla, námraza, viditeľná obloha\";\n        break;\n    case 49:\n        msg.payload = \"Hmla, námraza, nevidno oblohu\";\n        break;\n//---------------------------------------------------------------------------------\n    case 50:\n        msg.payload = \"Mrholenie, nemrzne, prerušovane slabé\";\n        break;\n    case 51:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite slabé\";\n        break;\n    case 52:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované mierne\";\n        break;\n    case 53:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite mierne\";\n        break;\n    case 54:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované silné\";\n        break;\n    case 55:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite silné\";\n        break;\n    case 56:\n        msg.payload = \"Mrholenie, mrznutie, mierne\";\n        break;\n    case 57:\n        msg.payload = \"Mrholenie, mrznutie, mierne alebo silné\";\n        break;\n    case 58:\n        msg.payload = \"Mrholenie a dážď, mierny\";\n        break;\n    case 59:\n        msg.payload = \"Mrholenie a dážď, mierny alebo silný\";\n        break;\n//---------------------------------------------------------------------------------\n    case 60:\n        msg.payload = \"Dážď, nemrzne, občas slabý\";\n        break;\n    case 61:\n        msg.payload = \"Dážď, nemrzne, trvalo slabý\";\n        break;\n    case 62:\n        msg.payload = \"Dážď, nemrzne, občasný mierny\";\n        break;\n    case 63:\n        msg.payload = \"Dážď, nemrzne, nepretržite mierny\";\n        break;\n    case 64:\n        msg.payload = \"Dážď, nemrznúci, občas silný\";\n        break;\n    case 65:\n        msg.payload = \"Dážď, nemrzne, nepretržite silný\";\n        break;\n    case 66:\n        msg.payload = \"Dážď, mrznutie, mierne\";\n        break;\n    case 67:\n        msg.payload = \"Dážď, mrznutie, mierny alebo silný dážď\";\n        break;\n    case 68:\n        msg.payload = \"Dážď alebo mrholenie a sneženie, mierne\";\n        break;\n    case 69:\n        msg.payload = \"Dážď alebo mrholenie a sneh, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 70:\n        msg.payload = \"Slabé občasné sneženie\";\n        break;\n    case 71:\n        msg.payload = \"Nepretržité slabé sneženie\";\n        break;\n    case 72:\n        msg.payload = \"Mierne občasné sneženie\";\n        break;\n    case 73:\n        msg.payload = \"Nepretržité mierne sneženie\";\n        break;\n    case 74:\n        msg.payload = \"Občasné sneženie\";\n        break;\n    case 75:\n        msg.payload = \"Nepretržité sneženie\";\n        break;\n    case 76:\n        msg.payload = \"Ľadové hranoly (s hmlou alebo bez hmly)\";\n        break;\n    case 77:\n        msg.payload = \"Snehové zrná (s hmlou alebo bez hmly)\";\n        break;\n    case 78:\n        msg.payload = \"Snehové kryštály (s hmlou alebo bez hmly)\";\n        break;\n    case 79:\n        msg.payload = \"Ľadové pelety\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 80:\n        msg.payload = \"Dažďové prehánky, slabé\";\n        break;\n    case 81:\n        msg.payload = \"Dažďové prehánky, mierne alebo silné\";\n        break;\n    case 82:\n        msg.payload = \"Dažďové prehánky, prudké\";\n        break;\n    case 83:\n        msg.payload = \"Prehánky dažďa a snehu zmiešané, slabé\";\n        break;\n    case 84:\n        msg.payload = \"Dažďové a snehové prehánky zmiešané, mierne alebo silné\";\n        break;\n    case 85:\n        msg.payload = \"Snehové prehánky, slabé\";\n        break;\n    case 86:\n        msg.payload = \"Snehové prehánky, stredne silné alebo silné\";\n        break;\n    case 87:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,slabé\";\n        break;\n    case 88:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,mierne alebo silné\";\n        break;\n    case 89:\n        msg.payload = \"Prehánky s krúpami, slabé\";\n        break;\n    // Add more cases here...\n    case 90:\n        msg.payload = \"Prehánky s krúpami, mierne alebo silné\";\n        break;\n    case 91:\n        msg.payload = \"Slabý dážď v čase pozorovania\";\n        break;\n    case 92:\n        msg.payload = \"Mierny alebo silný dážď v čase pozorovania\";\n        break;\n    case 93:\n        msg.payload = \"Slabé sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 94:\n        msg.payload = \"Mierne alebo silné sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 95:\n        msg.payload = \"Búrka, slabá alebo mierna, bez krúp\";\n        break;\n    case 96:\n        msg.payload = \"Búrka, slabá alebo mierna, s krúpami\";\n        break;\n    case 97:\n        msg.payload = \"Búrka, silná, bez krúp\";\n        break;\n    case 98:\n        msg.payload = \"Búrka kombinovaná s prachovou alebo piesočnou búrkou\";\n        break;\n    case 99:\n        msg.payload = \"Búrka, silná, s krúpami\";\n        break;\n    default:\n        msg.payload = \"Invalid value\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 1100,
+        "wires": [
+            [
+                "0a645aeb2035d414"
+            ]
+        ]
+    },
+    {
+        "id": "2725ac3a559c7d9d",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "name": "",
+        "label": "Východ slnka",
+        "format": "",
+        "layout": "row-right",
+        "className": "",
+        "x": 1270,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "297f35a29b842180",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "name": "",
+        "label": "Západ slnka",
+        "format": "",
+        "layout": "row-right",
+        "className": "",
+        "x": 1270,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "e1812197999d6e44",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Dnes",
+        "format": "{{payload.daily.temperature_2m_max[0]}}°C",
+        "layout": "row-spread",
+        "className": "",
+        "x": 970,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "3463bd5f973701d6",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 7,
+        "width": 4,
+        "height": 1,
+        "name": "+1",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.temperature_2m_max[1]}}°C",
+        "layout": "row-spread",
+        "className": "",
+        "x": 970,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "373d21ac7445d47b",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "name": "+2",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.temperature_2m_max[2]}}°C",
+        "layout": "row-spread",
+        "className": "",
+        "x": 970,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "3ff0709bb37bba54",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 11,
+        "width": 4,
+        "height": 1,
+        "name": "+3",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.temperature_2m_max[3]}}°C",
+        "layout": "row-spread",
+        "className": "",
+        "x": 970,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "42773034aca595a5",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 13,
+        "width": 4,
+        "height": 1,
+        "name": "+4",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.temperature_2m_max[4]}}°C",
+        "layout": "row-spread",
+        "className": "",
+        "x": 970,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "3bc5b742673a1fbe",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 15,
+        "width": 4,
+        "height": 1,
+        "name": "+5",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.temperature_2m_max[5]}}°C",
+        "layout": "row-spread",
+        "className": "",
+        "x": 970,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "9d3b610bae6ce0bf",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 17,
+        "width": 4,
+        "height": 1,
+        "name": "+6",
+        "label": "{{msg.topic}}",
+        "format": "{{payload.daily.temperature_2m_max[6]}}°C",
+        "layout": "row-spread",
+        "className": "",
+        "x": 970,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "b20a1cfabc460bd8",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "name": "",
+        "label": "Max. teplota",
+        "format": "",
+        "layout": "row-right",
+        "className": "",
+        "x": 990,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "dcb4af158cd5b9f1",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 720,
+        "wires": [
+            [
+                "e1812197999d6e44"
+            ]
+        ]
+    },
+    {
+        "id": "58ba59501644216e",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "1",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 760,
+        "wires": [
+            [
+                "3463bd5f973701d6"
+            ]
+        ]
+    },
+    {
+        "id": "5058e93b9ca9fabc",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "2",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 800,
+        "wires": [
+            [
+                "373d21ac7445d47b"
+            ]
+        ]
+    },
+    {
+        "id": "a274b10cdf8efe4f",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "3",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 840,
+        "wires": [
+            [
+                "3ff0709bb37bba54"
+            ]
+        ]
+    },
+    {
+        "id": "e67e2566ad68d8a9",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "4",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 880,
+        "wires": [
+            [
+                "42773034aca595a5"
+            ]
+        ]
+    },
+    {
+        "id": "1fae08e06804ad1f",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "5",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 920,
+        "wires": [
+            [
+                "3bc5b742673a1fbe"
+            ]
+        ]
+    },
+    {
+        "id": "4f282204a4a76625",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "6",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 800,
+        "y": 960,
+        "wires": [
+            [
+                "9d3b610bae6ce0bf"
+            ]
+        ]
+    },
+    {
+        "id": "5c26c419c68f5f50",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "name": "",
+        "label": "Min. teplota",
+        "format": "",
+        "layout": "row-right",
+        "className": "",
+        "x": 1270,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "5886a192a5118e0e",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 8,
+        "width": 3,
+        "height": 1,
+        "name": "+1",
+        "label": "",
+        "format": "{{payload.daily.temperature_2m_min[1]}}°C",
+        "layout": "col-center",
+        "className": "",
+        "x": 1250,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "13a5e0bed7edb93d",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "name": "Dnes",
+        "label": "",
+        "format": "{{payload.daily.temperature_2m_min[0]}}°C",
+        "layout": "col-center",
+        "className": "",
+        "x": 1250,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "a7691e8f4f4bf25c",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 10,
+        "width": 3,
+        "height": 1,
+        "name": "+2",
+        "label": "",
+        "format": "{{payload.daily.temperature_2m_min[2]}}°C",
+        "layout": "col-center",
+        "className": "",
+        "x": 1250,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "653b759b9d36c79b",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 12,
+        "width": 3,
+        "height": 1,
+        "name": "+3",
+        "label": "",
+        "format": "{{payload.daily.temperature_2m_min[3]}}°C",
+        "layout": "col-center",
+        "className": "",
+        "x": 1250,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "3d0d16c6b9b03743",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 14,
+        "width": 3,
+        "height": 1,
+        "name": "+4",
+        "label": "",
+        "format": "{{payload.daily.temperature_2m_min[4]}}°C",
+        "layout": "col-center",
+        "className": "",
+        "x": 1250,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "51aed00607818c31",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 16,
+        "width": 3,
+        "height": 1,
+        "name": "+5",
+        "label": "",
+        "format": "{{payload.daily.temperature_2m_min[5]}}°C",
+        "layout": "col-center",
+        "className": "",
+        "x": 1250,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "1a72d2afbc3fe824",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 18,
+        "width": 3,
+        "height": 1,
+        "name": "+6",
+        "label": "",
+        "format": "{{payload.daily.temperature_2m_min[6]}}°C",
+        "layout": "col-center",
+        "className": "",
+        "x": 1250,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "c0969c3048a29c33",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "day2",
+        "func": "var value = msg.payload.daily.weathercode[1];\nswitch (value) {\n    case 0:\n        msg.payload = \"Slnečno\";\n        break;\n    case 1:\n        msg.payload = \"Oblaky sa vo všeobecnosti rozpúšťajú\";\n        break;\n    case 2:\n        msg.payload = \"Stav oblohy celkovo nezmenený\";\n        break;\n    case 3:\n        msg.payload = \"Oblačno\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 4:\n        msg.payload = \"Viditeľnosť znížená dymom\";\n        break;\n    case 5:\n        msg.payload = \"Hmla\";\n        break;\n    case 6:\n        msg.payload = \"Rozšírený prach vo vzduchu\";\n        break;\n    case 7:\n        msg.payload = \"Prach alebo piesok zdvihnutý vetrom\";\n        break;\n    case 8:\n        msg.payload = \"Vyvinuté víry prachu\";\n        break;\n    case 9:\n        msg.payload = \"Prachová búrka na dohľad\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 10:\n        msg.payload = \"Hmla\";\n        break;\n    case 11:\n        msg.payload = \"Známky hmly\";\n        break;\n    case 12:\n        msg.payload = \"Viac-menej súvislá hmla\";\n        break;\n    case 13:\n        msg.payload = \"Viditeľné blesky, nepočuť hromy\";\n        break;\n    case 14:\n        msg.payload = \"Zrážky na dohľad\";\n        break;\n    case 15:\n        msg.payload = \"Zrážky na dohľad (odhaduje sa viac ako 5 km) od stanice\";\n        break;\n    case 16:\n        msg.payload = \"Zrážky na dohľad, blízko stanice\";\n        break;\n    case 17:\n        msg.payload = \"Búrky, ale bez zrážok v čase pozorovania\";\n        break;\n    case 18:\n        msg.payload = \"Búrky v čase pozorovania\";\n        break;\n    case 19:\n        msg.payload = \"Lievikový oblak\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 20:\n        msg.payload = \"Mrholenie alebo sneženie\";\n        break;\n    case 21:\n        msg.payload = \"Dážď\";\n        break;\n    case 22:\n        msg.payload = \"Sneh\";\n        break;\n    case 23:\n        msg.payload = \"Dážďové a snehové alebo ľadové pelety\";\n        break;\n    case 24:\n        msg.payload = \"Mrznúce mrholenie alebo mrznúci dážď\";\n        break;\n    case 25:\n        msg.payload = \"Dažďové prehánky\";\n        break;\n    case 26:\n        msg.payload = \"Snehové prehánky alebo dážď a sneh\";\n        break;\n    case 27:\n        msg.payload = \"Prehánky s krúpami\";\n        break;\n    case 28:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 29:\n        msg.payload = \"Búrka\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 30:\n        msg.payload = \"Mierna alebo stredná prašná búrka\";\n        break;\n    case 31:\n        msg.payload = \"Mierna alebo stredná prachová búrka – žiadna znateľná zmena\";\n        break;\n    case 32:\n        msg.payload = \"Mierna alebo stredná prachová – začala alebo sa zvýšila\";\n        break;\n    case 33:\n        msg.payload = \"Silná prachová búrka – znížila sa\";\n        break;\n    case 34:\n        msg.payload = \"Silná prachová búrka – žiadna výrazná zmena\";\n        break;\n    case 35:\n        msg.payload = \"Silná prachová búrka - začala alebo sa zvýšila\";\n        break;\n    case 36:\n        msg.payload = \"Slabo alebo mierne fúkajúci sneh vo všeobecnosti nízko\";\n        break;\n    case 37:\n        msg.payload = \"Ťažký nános snehu\";\n        break;\n    case 38:\n        msg.payload = \"Slabo alebo mierne fúkané sneženie vo všeobecnosti vysoké\";\n        break;\n    case 39:\n        msg.payload = \"Ťažký sneh vo všeobecnosti vysoký\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 40:\n    case 41:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 42:\n        msg.payload = \"Hmla alebo ľadová hmla, viditeľná obloha\";\n        break;\n    case 43:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu\";\n        break;\n    case 44:\n        msg.payload = \"Hmla alebo ľadová hmla, obloha viditeľná bez výrazných zmien\";\n        break;\n    case 45:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu, žiadna výrazná zmena\";\n        break;\n    case 46:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, obloha je viditeľná alebo zhustla\";\n        break;\n    case 47:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, nevidno oblohu, alebo zhustla\";\n        break;\n    case 48:\n        msg.payload = \"Hmla, námraza, viditeľná obloha\";\n        break;\n    case 49:\n        msg.payload = \"Hmla, námraza, nevidno oblohu\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 50:\n        msg.payload = \"Mrholenie, nemrzne, prerušovane slabé\";\n        break;\n    case 51:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite slabé\";\n        break;\n    case 52:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované mierne\";\n        break;\n    case 53:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite mierne\";\n        break;\n    case 54:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované silné\";\n        break;\n    case 55:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite silné\";\n        break;\n    case 56:\n        msg.payload = \"Mrholenie, mrznutie, mierne\";\n        break;\n    case 57:\n        msg.payload = \"Mrholenie, mrznutie, mierne alebo silné\";\n        break;\n    case 58:\n        msg.payload = \"Mrholenie a dážď, mierny\";\n        break;\n    case 59:\n        msg.payload = \"Mrholenie a dážď, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 60:\n        msg.payload = \"Dážď, nemrzne, občas slabý\";\n        break;\n    case 61:\n        msg.payload = \"Dážď, nemrzne, trvalo slabý\";\n        break;\n    case 62:\n        msg.payload = \"Dážď, nemrzne, občasný mierny\";\n        break;\n    case 63:\n        msg.payload = \"Dážď, nemrzne, nepretržite mierny\";\n        break;\n    case 64:\n        msg.payload = \"Dážď, nemrznúci, občas silný\";\n        break;\n    case 65:\n        msg.payload = \"Dážď, nemrzne, nepretržite silný\";\n        break;\n    case 66:\n        msg.payload = \"Dážď, mrznutie, mierne\";\n        break;\n    case 67:\n        msg.payload = \"Dážď, mrznutie, mierny alebo silný dážď\";\n        break;\n    case 68:\n        msg.payload = \"Dážď alebo mrholenie a sneženie, mierne\";\n        break;\n    case 69:\n        msg.payload = \"Dážď alebo mrholenie a sneh, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 70:\n        msg.payload = \"Slabé občasné sneženie\";\n        break;\n    case 71:\n        msg.payload = \"Nepretržité slabé sneženie\";\n        break;\n    case 72:\n        msg.payload = \"Mierne občasné sneženie\";\n        break;\n    case 73:\n        msg.payload = \"Nepretržité mierne sneženie\";\n        break;\n    case 74:\n        msg.payload = \"Občasné sneženie\";\n        break;\n    case 75:\n        msg.payload = \"Nepretržité sneženie\";\n        break;\n    case 76:\n        msg.payload = \"Ľadové hranoly (s hmlou alebo bez hmly)\";\n        break;\n    case 77:\n        msg.payload = \"Snehové zrná (s hmlou alebo bez hmly)\";\n        break;\n    case 78:\n        msg.payload = \"Snehové kryštály (s hmlou alebo bez hmly)\";\n        break;\n    case 79:\n        msg.payload = \"Ľadové pelety\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 80:\n        msg.payload = \"Dažďové prehánky, slabé\";\n        break;\n    case 81:\n        msg.payload = \"Dažďové prehánky, mierne alebo silné\";\n        break;\n    case 82:\n        msg.payload = \"Dažďové prehánky, prudké\";\n        break;\n    case 83:\n        msg.payload = \"Prehánky dažďa a snehu zmiešané, slabé\";\n        break;\n    case 84:\n        msg.payload = \"Dažďové a snehové prehánky zmiešané, mierne alebo silné\";\n        break;\n    case 85:\n        msg.payload = \"Snehové prehánky, slabé\";\n        break;\n    case 86:\n        msg.payload = \"Snehové prehánky, stredne silné alebo silné\";\n        break;\n    case 87:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,slabé\";\n        break;\n    case 88:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,mierne alebo silné\";\n        break;\n    case 89:\n        msg.payload = \"Prehánky s krúpami, slabé\";\n        break;\n    // Add more cases here...\n    case 90:\n        msg.payload = \"Prehánky s krúpami, mierne alebo silné\";\n        break;\n    case 91:\n        msg.payload = \"Slabý dážď v čase pozorovania\";\n        break;\n    case 92:\n        msg.payload = \"Mierny alebo silný dážď v čase pozorovania\";\n        break;\n    case 93:\n        msg.payload = \"Slabé sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 94:\n        msg.payload = \"Mierne alebo silné sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 95:\n        msg.payload = \"Búrka, slabá alebo mierna, bez krúp\";\n        break;\n    case 96:\n        msg.payload = \"Búrka, slabá alebo mierna, s krúpami\";\n        break;\n    case 97:\n        msg.payload = \"Búrka, silná, bez krúp\";\n        break;\n    case 98:\n        msg.payload = \"Búrka kombinovaná s prachovou alebo piesočnou búrkou\";\n        break;\n    case 99:\n        msg.payload = \"Búrka, silná, s krúpami\";\n        break;\n    default:\n        msg.payload = \"Invalid value\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 1140,
+        "wires": [
+            [
+                "8123fd61b9dbc595"
+            ]
+        ]
+    },
+    {
+        "id": "890eaaf85c55bccc",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "day3",
+        "func": "var value = msg.payload.daily.weathercode[2];\nswitch (value) {\n    case 0:\n        msg.payload = \"Slnečno\";\n        break;\n    case 1:\n        msg.payload = \"Oblaky sa vo všeobecnosti rozpúšťajú\";\n        break;\n    case 2:\n        msg.payload = \"Stav oblohy celkovo nezmenený\";\n        break;\n    case 3:\n        msg.payload = \"Oblačno\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 4:\n        msg.payload = \"Viditeľnosť znížená dymom\";\n        break;\n    case 5:\n        msg.payload = \"Hmla\";\n        break;\n    case 6:\n        msg.payload = \"Rozšírený prach vo vzduchu\";\n        break;\n    case 7:\n        msg.payload = \"Prach alebo piesok zdvihnutý vetrom\";\n        break;\n    case 8:\n        msg.payload = \"Vyvinuté víry prachu\";\n        break;\n    case 9:\n        msg.payload = \"Prachová búrka na dohľad\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 10:\n        msg.payload = \"Hmla\";\n        break;\n    case 11:\n        msg.payload = \"Známky hmly\";\n        break;\n    case 12:\n        msg.payload = \"Viac-menej súvislá hmla\";\n        break;\n    case 13:\n        msg.payload = \"Viditeľné blesky, nepočuť hromy\";\n        break;\n    case 14:\n        msg.payload = \"Zrážky na dohľad\";\n        break;\n    case 15:\n        msg.payload = \"Zrážky na dohľad (odhaduje sa viac ako 5 km) od stanice\";\n        break;\n    case 16:\n        msg.payload = \"Zrážky na dohľad, blízko stanice\";\n        break;\n    case 17:\n        msg.payload = \"Búrky, ale bez zrážok v čase pozorovania\";\n        break;\n    case 18:\n        msg.payload = \"Búrky v čase pozorovania\";\n        break;\n    case 19:\n        msg.payload = \"Lievikový oblak\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 20:\n        msg.payload = \"Mrholenie alebo sneženie\";\n        break;\n    case 21:\n        msg.payload = \"Dážď\";\n        break;\n    case 22:\n        msg.payload = \"Sneh\";\n        break;\n    case 23:\n        msg.payload = \"Dážďové a snehové alebo ľadové pelety\";\n        break;\n    case 24:\n        msg.payload = \"Mrznúce mrholenie alebo mrznúci dážď\";\n        break;\n    case 25:\n        msg.payload = \"Dažďové prehánky\";\n        break;\n    case 26:\n        msg.payload = \"Snehové prehánky alebo dážď a sneh\";\n        break;\n    case 27:\n        msg.payload = \"Prehánky s krúpami\";\n        break;\n    case 28:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 29:\n        msg.payload = \"Búrka\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 30:\n        msg.payload = \"Mierna alebo stredná prašná búrka\";\n        break;\n    case 31:\n        msg.payload = \"Mierna alebo stredná prachová búrka – žiadna znateľná zmena\";\n        break;\n    case 32:\n        msg.payload = \"Mierna alebo stredná prachová – začala alebo sa zvýšila\";\n        break;\n    case 33:\n        msg.payload = \"Silná prachová búrka – znížila sa\";\n        break;\n    case 34:\n        msg.payload = \"Silná prachová búrka – žiadna výrazná zmena\";\n        break;\n    case 35:\n        msg.payload = \"Silná prachová búrka - začala alebo sa zvýšila\";\n        break;\n    case 36:\n        msg.payload = \"Slabo alebo mierne fúkajúci sneh vo všeobecnosti nízko\";\n        break;\n    case 37:\n        msg.payload = \"Ťažký nános snehu\";\n        break;\n    case 38:\n        msg.payload = \"Slabo alebo mierne fúkané sneženie vo všeobecnosti vysoké\";\n        break;\n    case 39:\n        msg.payload = \"Ťažký sneh vo všeobecnosti vysoký\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 40:\n    case 41:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 42:\n        msg.payload = \"Hmla alebo ľadová hmla, viditeľná obloha\";\n        break;\n    case 43:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu\";\n        break;\n    case 44:\n        msg.payload = \"Hmla alebo ľadová hmla, obloha viditeľná bez výrazných zmien\";\n        break;\n    case 45:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu, žiadna výrazná zmena\";\n        break;\n    case 46:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, obloha je viditeľná alebo zhustla\";\n        break;\n    case 47:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, nevidno oblohu, alebo zhustla\";\n        break;\n    case 48:\n        msg.payload = \"Hmla, námraza, viditeľná obloha\";\n        break;\n    case 49:\n        msg.payload = \"Hmla, námraza, nevidno oblohu\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 50:\n        msg.payload = \"Mrholenie, nemrzne, prerušovane slabé\";\n        break;\n    case 51:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite slabé\";\n        break;\n    case 52:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované mierne\";\n        break;\n    case 53:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite mierne\";\n        break;\n    case 54:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované silné\";\n        break;\n    case 55:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite silné\";\n        break;\n    case 56:\n        msg.payload = \"Mrholenie, mrznutie, mierne\";\n        break;\n    case 57:\n        msg.payload = \"Mrholenie, mrznutie, mierne alebo silné\";\n        break;\n    case 58:\n        msg.payload = \"Mrholenie a dážď, mierny\";\n        break;\n    case 59:\n        msg.payload = \"Mrholenie a dážď, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 60:\n        msg.payload = \"Dážď, nemrzne, občas slabý\";\n        break;\n    case 61:\n        msg.payload = \"Dážď, nemrzne, trvalo slabý\";\n        break;\n    case 62:\n        msg.payload = \"Dážď, nemrzne, občasný mierny\";\n        break;\n    case 63:\n        msg.payload = \"Dážď, nemrzne, nepretržite mierny\";\n        break;\n    case 64:\n        msg.payload = \"Dážď, nemrznúci, občas silný\";\n        break;\n    case 65:\n        msg.payload = \"Dážď, nemrzne, nepretržite silný\";\n        break;\n    case 66:\n        msg.payload = \"Dážď, mrznutie, mierne\";\n        break;\n    case 67:\n        msg.payload = \"Dážď, mrznutie, mierny alebo silný dážď\";\n        break;\n    case 68:\n        msg.payload = \"Dážď alebo mrholenie a sneženie, mierne\";\n        break;\n    case 69:\n        msg.payload = \"Dážď alebo mrholenie a sneh, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 70:\n        msg.payload = \"Slabé občasné sneženie\";\n        break;\n    case 71:\n        msg.payload = \"Nepretržité slabé sneženie\";\n        break;\n    case 72:\n        msg.payload = \"Mierne občasné sneženie\";\n        break;\n    case 73:\n        msg.payload = \"Nepretržité mierne sneženie\";\n        break;\n    case 74:\n        msg.payload = \"Občasné sneženie\";\n        break;\n    case 75:\n        msg.payload = \"Nepretržité sneženie\";\n        break;\n    case 76:\n        msg.payload = \"Ľadové hranoly (s hmlou alebo bez hmly)\";\n        break;\n    case 77:\n        msg.payload = \"Snehové zrná (s hmlou alebo bez hmly)\";\n        break;\n    case 78:\n        msg.payload = \"Snehové kryštály (s hmlou alebo bez hmly)\";\n        break;\n    case 79:\n        msg.payload = \"Ľadové pelety\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 80:\n        msg.payload = \"Dažďové prehánky, slabé\";\n        break;\n    case 81:\n        msg.payload = \"Dažďové prehánky, mierne alebo silné\";\n        break;\n    case 82:\n        msg.payload = \"Dažďové prehánky, prudké\";\n        break;\n    case 83:\n        msg.payload = \"Prehánky dažďa a snehu zmiešané, slabé\";\n        break;\n    case 84:\n        msg.payload = \"Dažďové a snehové prehánky zmiešané, mierne alebo silné\";\n        break;\n    case 85:\n        msg.payload = \"Snehové prehánky, slabé\";\n        break;\n    case 86:\n        msg.payload = \"Snehové prehánky, stredne silné alebo silné\";\n        break;\n    case 87:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,slabé\";\n        break;\n    case 88:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,mierne alebo silné\";\n        break;\n    case 89:\n        msg.payload = \"Prehánky s krúpami, slabé\";\n        break;\n    // Add more cases here...\n    case 90:\n        msg.payload = \"Prehánky s krúpami, mierne alebo silné\";\n        break;\n    case 91:\n        msg.payload = \"Slabý dážď v čase pozorovania\";\n        break;\n    case 92:\n        msg.payload = \"Mierny alebo silný dážď v čase pozorovania\";\n        break;\n    case 93:\n        msg.payload = \"Slabé sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 94:\n        msg.payload = \"Mierne alebo silné sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 95:\n        msg.payload = \"Búrka, slabá alebo mierna, bez krúp\";\n        break;\n    case 96:\n        msg.payload = \"Búrka, slabá alebo mierna, s krúpami\";\n        break;\n    case 97:\n        msg.payload = \"Búrka, silná, bez krúp\";\n        break;\n    case 98:\n        msg.payload = \"Búrka kombinovaná s prachovou alebo piesočnou búrkou\";\n        break;\n    case 99:\n        msg.payload = \"Búrka, silná, s krúpami\";\n        break;\n    default:\n        msg.payload = \"Invalid value\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 1180,
+        "wires": [
+            [
+                "4e918cd8fcd0bc99"
+            ]
+        ]
+    },
+    {
+        "id": "af784b554589a3fe",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "day4",
+        "func": "var value = msg.payload.daily.weathercode[3];\nswitch (value) {\n    case 0:\n        msg.payload = \"Slnečno\";\n        break;\n    case 1:\n        msg.payload = \"Oblaky sa vo všeobecnosti rozpúšťajú\";\n        break;\n    case 2:\n        msg.payload = \"Stav oblohy celkovo nezmenený\";\n        break;\n    case 3:\n        msg.payload = \"Oblačno\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 4:\n        msg.payload = \"Viditeľnosť znížená dymom\";\n        break;\n    case 5:\n        msg.payload = \"Hmla\";\n        break;\n    case 6:\n        msg.payload = \"Rozšírený prach vo vzduchu\";\n        break;\n    case 7:\n        msg.payload = \"Prach alebo piesok zdvihnutý vetrom\";\n        break;\n    case 8:\n        msg.payload = \"Vyvinuté víry prachu\";\n        break;\n    case 9:\n        msg.payload = \"Prachová búrka na dohľad\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 10:\n        msg.payload = \"Hmla\";\n        break;\n    case 11:\n        msg.payload = \"Známky hmly\";\n        break;\n    case 12:\n        msg.payload = \"Viac-menej súvislá hmla\";\n        break;\n    case 13:\n        msg.payload = \"Viditeľné blesky, nepočuť hromy\";\n        break;\n    case 14:\n        msg.payload = \"Zrážky na dohľad\";\n        break;\n    case 15:\n        msg.payload = \"Zrážky na dohľad (odhaduje sa viac ako 5 km) od stanice\";\n        break;\n    case 16:\n        msg.payload = \"Zrážky na dohľad, blízko stanice\";\n        break;\n    case 17:\n        msg.payload = \"Búrky, ale bez zrážok v čase pozorovania\";\n        break;\n    case 18:\n        msg.payload = \"Búrky v čase pozorovania\";\n        break;\n    case 19:\n        msg.payload = \"Lievikový oblak\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 20:\n        msg.payload = \"Mrholenie alebo sneženie\";\n        break;\n    case 21:\n        msg.payload = \"Dážď\";\n        break;\n    case 22:\n        msg.payload = \"Sneh\";\n        break;\n    case 23:\n        msg.payload = \"Dážďové a snehové alebo ľadové pelety\";\n        break;\n    case 24:\n        msg.payload = \"Mrznúce mrholenie alebo mrznúci dážď\";\n        break;\n    case 25:\n        msg.payload = \"Dažďové prehánky\";\n        break;\n    case 26:\n        msg.payload = \"Snehové prehánky alebo dážď a sneh\";\n        break;\n    case 27:\n        msg.payload = \"Prehánky s krúpami\";\n        break;\n    case 28:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 29:\n        msg.payload = \"Búrka\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 30:\n        msg.payload = \"Mierna alebo stredná prašná búrka\";\n        break;\n    case 31:\n        msg.payload = \"Mierna alebo stredná prachová búrka – žiadna znateľná zmena\";\n        break;\n    case 32:\n        msg.payload = \"Mierna alebo stredná prachová – začala alebo sa zvýšila\";\n        break;\n    case 33:\n        msg.payload = \"Silná prachová búrka – znížila sa\";\n        break;\n    case 34:\n        msg.payload = \"Silná prachová búrka – žiadna výrazná zmena\";\n        break;\n    case 35:\n        msg.payload = \"Silná prachová búrka - začala alebo sa zvýšila\";\n        break;\n    case 36:\n        msg.payload = \"Slabo alebo mierne fúkajúci sneh vo všeobecnosti nízko\";\n        break;\n    case 37:\n        msg.payload = \"Ťažký nános snehu\";\n        break;\n    case 38:\n        msg.payload = \"Slabo alebo mierne fúkané sneženie vo všeobecnosti vysoké\";\n        break;\n    case 39:\n        msg.payload = \"Ťažký sneh vo všeobecnosti vysoký\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 40:\n    case 41:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 42:\n        msg.payload = \"Hmla alebo ľadová hmla, viditeľná obloha\";\n        break;\n    case 43:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu\";\n        break;\n    case 44:\n        msg.payload = \"Hmla alebo ľadová hmla, obloha viditeľná bez výrazných zmien\";\n        break;\n    case 45:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu, žiadna výrazná zmena\";\n        break;\n    case 46:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, obloha je viditeľná alebo zhustla\";\n        break;\n    case 47:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, nevidno oblohu, alebo zhustla\";\n        break;\n    case 48:\n        msg.payload = \"Hmla, námraza, viditeľná obloha\";\n        break;\n    case 49:\n        msg.payload = \"Hmla, námraza, nevidno oblohu\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 50:\n        msg.payload = \"Mrholenie, nemrzne, prerušovane slabé\";\n        break;\n    case 51:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite slabé\";\n        break;\n    case 52:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované mierne\";\n        break;\n    case 53:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite mierne\";\n        break;\n    case 54:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované silné\";\n        break;\n    case 55:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite silné\";\n        break;\n    case 56:\n        msg.payload = \"Mrholenie, mrznutie, mierne\";\n        break;\n    case 57:\n        msg.payload = \"Mrholenie, mrznutie, mierne alebo silné\";\n        break;\n    case 58:\n        msg.payload = \"Mrholenie a dážď, mierny\";\n        break;\n    case 59:\n        msg.payload = \"Mrholenie a dážď, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 60:\n        msg.payload = \"Dážď, nemrzne, občas slabý\";\n        break;\n    case 61:\n        msg.payload = \"Dážď, nemrzne, trvalo slabý\";\n        break;\n    case 62:\n        msg.payload = \"Dážď, nemrzne, občasný mierny\";\n        break;\n    case 63:\n        msg.payload = \"Dážď, nemrzne, nepretržite mierny\";\n        break;\n    case 64:\n        msg.payload = \"Dážď, nemrznúci, občas silný\";\n        break;\n    case 65:\n        msg.payload = \"Dážď, nemrzne, nepretržite silný\";\n        break;\n    case 66:\n        msg.payload = \"Dážď, mrznutie, mierne\";\n        break;\n    case 67:\n        msg.payload = \"Dážď, mrznutie, mierny alebo silný dážď\";\n        break;\n    case 68:\n        msg.payload = \"Dážď alebo mrholenie a sneženie, mierne\";\n        break;\n    case 69:\n        msg.payload = \"Dážď alebo mrholenie a sneh, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 70:\n        msg.payload = \"Slabé občasné sneženie\";\n        break;\n    case 71:\n        msg.payload = \"Nepretržité slabé sneženie\";\n        break;\n    case 72:\n        msg.payload = \"Mierne občasné sneženie\";\n        break;\n    case 73:\n        msg.payload = \"Nepretržité mierne sneženie\";\n        break;\n    case 74:\n        msg.payload = \"Občasné sneženie\";\n        break;\n    case 75:\n        msg.payload = \"Nepretržité sneženie\";\n        break;\n    case 76:\n        msg.payload = \"Ľadové hranoly (s hmlou alebo bez hmly)\";\n        break;\n    case 77:\n        msg.payload = \"Snehové zrná (s hmlou alebo bez hmly)\";\n        break;\n    case 78:\n        msg.payload = \"Snehové kryštály (s hmlou alebo bez hmly)\";\n        break;\n    case 79:\n        msg.payload = \"Ľadové pelety\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 80:\n        msg.payload = \"Dažďové prehánky, slabé\";\n        break;\n    case 81:\n        msg.payload = \"Dažďové prehánky, mierne alebo silné\";\n        break;\n    case 82:\n        msg.payload = \"Dažďové prehánky, prudké\";\n        break;\n    case 83:\n        msg.payload = \"Prehánky dažďa a snehu zmiešané, slabé\";\n        break;\n    case 84:\n        msg.payload = \"Dažďové a snehové prehánky zmiešané, mierne alebo silné\";\n        break;\n    case 85:\n        msg.payload = \"Snehové prehánky, slabé\";\n        break;\n    case 86:\n        msg.payload = \"Snehové prehánky, stredne silné alebo silné\";\n        break;\n    case 87:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,slabé\";\n        break;\n    case 88:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,mierne alebo silné\";\n        break;\n    case 89:\n        msg.payload = \"Prehánky s krúpami, slabé\";\n        break;\n    // Add more cases here...\n    case 90:\n        msg.payload = \"Prehánky s krúpami, mierne alebo silné\";\n        break;\n    case 91:\n        msg.payload = \"Slabý dážď v čase pozorovania\";\n        break;\n    case 92:\n        msg.payload = \"Mierny alebo silný dážď v čase pozorovania\";\n        break;\n    case 93:\n        msg.payload = \"Slabé sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 94:\n        msg.payload = \"Mierne alebo silné sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 95:\n        msg.payload = \"Búrka, slabá alebo mierna, bez krúp\";\n        break;\n    case 96:\n        msg.payload = \"Búrka, slabá alebo mierna, s krúpami\";\n        break;\n    case 97:\n        msg.payload = \"Búrka, silná, bez krúp\";\n        break;\n    case 98:\n        msg.payload = \"Búrka kombinovaná s prachovou alebo piesočnou búrkou\";\n        break;\n    case 99:\n        msg.payload = \"Búrka, silná, s krúpami\";\n        break;\n    default:\n        msg.payload = \"Invalid value\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 1220,
+        "wires": [
+            [
+                "c922633bbf1e7365"
+            ]
+        ]
+    },
+    {
+        "id": "076a290ed8a81067",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "day5",
+        "func": "var value = msg.payload.daily.weathercode[4];\nswitch (value) {\n    case 0:\n        msg.payload = \"Slnečno\";\n        break;\n    case 1:\n        msg.payload = \"Oblaky sa vo všeobecnosti rozpúšťajú\";\n        break;\n    case 2:\n        msg.payload = \"Stav oblohy celkovo nezmenený\";\n        break;\n    case 3:\n        msg.payload = \"Oblačno\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 4:\n        msg.payload = \"Viditeľnosť znížená dymom\";\n        break;\n    case 5:\n        msg.payload = \"Hmla\";\n        break;\n    case 6:\n        msg.payload = \"Rozšírený prach vo vzduchu\";\n        break;\n    case 7:\n        msg.payload = \"Prach alebo piesok zdvihnutý vetrom\";\n        break;\n    case 8:\n        msg.payload = \"Vyvinuté víry prachu\";\n        break;\n    case 9:\n        msg.payload = \"Prachová búrka na dohľad\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 10:\n        msg.payload = \"Hmla\";\n        break;\n    case 11:\n        msg.payload = \"Známky hmly\";\n        break;\n    case 12:\n        msg.payload = \"Viac-menej súvislá hmla\";\n        break;\n    case 13:\n        msg.payload = \"Viditeľné blesky, nepočuť hromy\";\n        break;\n    case 14:\n        msg.payload = \"Zrážky na dohľad\";\n        break;\n    case 15:\n        msg.payload = \"Zrážky na dohľad (odhaduje sa viac ako 5 km) od stanice\";\n        break;\n    case 16:\n        msg.payload = \"Zrážky na dohľad, blízko stanice\";\n        break;\n    case 17:\n        msg.payload = \"Búrky, ale bez zrážok v čase pozorovania\";\n        break;\n    case 18:\n        msg.payload = \"Búrky v čase pozorovania\";\n        break;\n    case 19:\n        msg.payload = \"Lievikový oblak\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 20:\n        msg.payload = \"Mrholenie alebo sneženie\";\n        break;\n    case 21:\n        msg.payload = \"Dážď\";\n        break;\n    case 22:\n        msg.payload = \"Sneh\";\n        break;\n    case 23:\n        msg.payload = \"Dážďové a snehové alebo ľadové pelety\";\n        break;\n    case 24:\n        msg.payload = \"Mrznúce mrholenie alebo mrznúci dážď\";\n        break;\n    case 25:\n        msg.payload = \"Dažďové prehánky\";\n        break;\n    case 26:\n        msg.payload = \"Snehové prehánky alebo dážď a sneh\";\n        break;\n    case 27:\n        msg.payload = \"Prehánky s krúpami\";\n        break;\n    case 28:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 29:\n        msg.payload = \"Búrka\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 30:\n        msg.payload = \"Mierna alebo stredná prašná búrka\";\n        break;\n    case 31:\n        msg.payload = \"Mierna alebo stredná prachová búrka – žiadna znateľná zmena\";\n        break;\n    case 32:\n        msg.payload = \"Mierna alebo stredná prachová – začala alebo sa zvýšila\";\n        break;\n    case 33:\n        msg.payload = \"Silná prachová búrka – znížila sa\";\n        break;\n    case 34:\n        msg.payload = \"Silná prachová búrka – žiadna výrazná zmena\";\n        break;\n    case 35:\n        msg.payload = \"Silná prachová búrka - začala alebo sa zvýšila\";\n        break;\n    case 36:\n        msg.payload = \"Slabo alebo mierne fúkajúci sneh vo všeobecnosti nízko\";\n        break;\n    case 37:\n        msg.payload = \"Ťažký nános snehu\";\n        break;\n    case 38:\n        msg.payload = \"Slabo alebo mierne fúkané sneženie vo všeobecnosti vysoké\";\n        break;\n    case 39:\n        msg.payload = \"Ťažký sneh vo všeobecnosti vysoký\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 40:\n    case 41:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 42:\n        msg.payload = \"Hmla alebo ľadová hmla, viditeľná obloha\";\n        break;\n    case 43:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu\";\n        break;\n    case 44:\n        msg.payload = \"Hmla alebo ľadová hmla, obloha viditeľná bez výrazných zmien\";\n        break;\n    case 45:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu, žiadna výrazná zmena\";\n        break;\n    case 46:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, obloha je viditeľná alebo zhustla\";\n        break;\n    case 47:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, nevidno oblohu, alebo zhustla\";\n        break;\n    case 48:\n        msg.payload = \"Hmla, námraza, viditeľná obloha\";\n        break;\n    case 49:\n        msg.payload = \"Hmla, námraza, nevidno oblohu\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 50:\n        msg.payload = \"Mrholenie, nemrzne, prerušovane slabé\";\n        break;\n    case 51:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite slabé\";\n        break;\n    case 52:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované mierne\";\n        break;\n    case 53:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite mierne\";\n        break;\n    case 54:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované silné\";\n        break;\n    case 55:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite silné\";\n        break;\n    case 56:\n        msg.payload = \"Mrholenie, mrznutie, mierne\";\n        break;\n    case 57:\n        msg.payload = \"Mrholenie, mrznutie, mierne alebo silné\";\n        break;\n    case 58:\n        msg.payload = \"Mrholenie a dážď, mierny\";\n        break;\n    case 59:\n        msg.payload = \"Mrholenie a dážď, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 60:\n        msg.payload = \"Dážď, nemrzne, občas slabý\";\n        break;\n    case 61:\n        msg.payload = \"Dážď, nemrzne, trvalo slabý\";\n        break;\n    case 62:\n        msg.payload = \"Dážď, nemrzne, občasný mierny\";\n        break;\n    case 63:\n        msg.payload = \"Dážď, nemrzne, nepretržite mierny\";\n        break;\n    case 64:\n        msg.payload = \"Dážď, nemrznúci, občas silný\";\n        break;\n    case 65:\n        msg.payload = \"Dážď, nemrzne, nepretržite silný\";\n        break;\n    case 66:\n        msg.payload = \"Dážď, mrznutie, mierne\";\n        break;\n    case 67:\n        msg.payload = \"Dážď, mrznutie, mierny alebo silný dážď\";\n        break;\n    case 68:\n        msg.payload = \"Dážď alebo mrholenie a sneženie, mierne\";\n        break;\n    case 69:\n        msg.payload = \"Dážď alebo mrholenie a sneh, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 70:\n        msg.payload = \"Slabé občasné sneženie\";\n        break;\n    case 71:\n        msg.payload = \"Nepretržité slabé sneženie\";\n        break;\n    case 72:\n        msg.payload = \"Mierne občasné sneženie\";\n        break;\n    case 73:\n        msg.payload = \"Nepretržité mierne sneženie\";\n        break;\n    case 74:\n        msg.payload = \"Občasné sneženie\";\n        break;\n    case 75:\n        msg.payload = \"Nepretržité sneženie\";\n        break;\n    case 76:\n        msg.payload = \"Ľadové hranoly (s hmlou alebo bez hmly)\";\n        break;\n    case 77:\n        msg.payload = \"Snehové zrná (s hmlou alebo bez hmly)\";\n        break;\n    case 78:\n        msg.payload = \"Snehové kryštály (s hmlou alebo bez hmly)\";\n        break;\n    case 79:\n        msg.payload = \"Ľadové pelety\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 80:\n        msg.payload = \"Dažďové prehánky, slabé\";\n        break;\n    case 81:\n        msg.payload = \"Dažďové prehánky, mierne alebo silné\";\n        break;\n    case 82:\n        msg.payload = \"Dažďové prehánky, prudké\";\n        break;\n    case 83:\n        msg.payload = \"Prehánky dažďa a snehu zmiešané, slabé\";\n        break;\n    case 84:\n        msg.payload = \"Dažďové a snehové prehánky zmiešané, mierne alebo silné\";\n        break;\n    case 85:\n        msg.payload = \"Snehové prehánky, slabé\";\n        break;\n    case 86:\n        msg.payload = \"Snehové prehánky, stredne silné alebo silné\";\n        break;\n    case 87:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,slabé\";\n        break;\n    case 88:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,mierne alebo silné\";\n        break;\n    case 89:\n        msg.payload = \"Prehánky s krúpami, slabé\";\n        break;\n    // Add more cases here...\n    case 90:\n        msg.payload = \"Prehánky s krúpami, mierne alebo silné\";\n        break;\n    case 91:\n        msg.payload = \"Slabý dážď v čase pozorovania\";\n        break;\n    case 92:\n        msg.payload = \"Mierny alebo silný dážď v čase pozorovania\";\n        break;\n    case 93:\n        msg.payload = \"Slabé sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 94:\n        msg.payload = \"Mierne alebo silné sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 95:\n        msg.payload = \"Búrka, slabá alebo mierna, bez krúp\";\n        break;\n    case 96:\n        msg.payload = \"Búrka, slabá alebo mierna, s krúpami\";\n        break;\n    case 97:\n        msg.payload = \"Búrka, silná, bez krúp\";\n        break;\n    case 98:\n        msg.payload = \"Búrka kombinovaná s prachovou alebo piesočnou búrkou\";\n        break;\n    case 99:\n        msg.payload = \"Búrka, silná, s krúpami\";\n        break;\n    default:\n        msg.payload = \"Invalid value\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 1260,
+        "wires": [
+            [
+                "b4eb9a031a93ed90"
+            ]
+        ]
+    },
+    {
+        "id": "ed3ebccee7b51462",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "day6",
+        "func": "var value = msg.payload.daily.weathercode[5];\nswitch (value) {\n    case 0:\n        msg.payload = \"Slnečno\";\n        break;\n    case 1:\n        msg.payload = \"Oblaky sa vo všeobecnosti rozpúšťajú\";\n        break;\n    case 2:\n        msg.payload = \"Stav oblohy celkovo nezmenený\";\n        break;\n    case 3:\n        msg.payload = \"Oblačno\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 4:\n        msg.payload = \"Viditeľnosť znížená dymom\";\n        break;\n    case 5:\n        msg.payload = \"Hmla\";\n        break;\n    case 6:\n        msg.payload = \"Rozšírený prach vo vzduchu\";\n        break;\n    case 7:\n        msg.payload = \"Prach alebo piesok zdvihnutý vetrom\";\n        break;\n    case 8:\n        msg.payload = \"Vyvinuté víry prachu\";\n        break;\n    case 9:\n        msg.payload = \"Prachová búrka na dohľad\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 10:\n        msg.payload = \"Hmla\";\n        break;\n    case 11:\n        msg.payload = \"Známky hmly\";\n        break;\n    case 12:\n        msg.payload = \"Viac-menej súvislá hmla\";\n        break;\n    case 13:\n        msg.payload = \"Viditeľné blesky, nepočuť hromy\";\n        break;\n    case 14:\n        msg.payload = \"Zrážky na dohľad\";\n        break;\n    case 15:\n        msg.payload = \"Zrážky na dohľad (odhaduje sa viac ako 5 km) od stanice\";\n        break;\n    case 16:\n        msg.payload = \"Zrážky na dohľad, blízko stanice\";\n        break;\n    case 17:\n        msg.payload = \"Búrky, ale bez zrážok v čase pozorovania\";\n        break;\n    case 18:\n        msg.payload = \"Búrky v čase pozorovania\";\n        break;\n    case 19:\n        msg.payload = \"Lievikový oblak\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 20:\n        msg.payload = \"Mrholenie alebo sneženie\";\n        break;\n    case 21:\n        msg.payload = \"Dážď\";\n        break;\n    case 22:\n        msg.payload = \"Sneh\";\n        break;\n    case 23:\n        msg.payload = \"Dážďové a snehové alebo ľadové pelety\";\n        break;\n    case 24:\n        msg.payload = \"Mrznúce mrholenie alebo mrznúci dážď\";\n        break;\n    case 25:\n        msg.payload = \"Dažďové prehánky\";\n        break;\n    case 26:\n        msg.payload = \"Snehové prehánky alebo dážď a sneh\";\n        break;\n    case 27:\n        msg.payload = \"Prehánky s krúpami\";\n        break;\n    case 28:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 29:\n        msg.payload = \"Búrka\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 30:\n        msg.payload = \"Mierna alebo stredná prašná búrka\";\n        break;\n    case 31:\n        msg.payload = \"Mierna alebo stredná prachová búrka – žiadna znateľná zmena\";\n        break;\n    case 32:\n        msg.payload = \"Mierna alebo stredná prachová – začala alebo sa zvýšila\";\n        break;\n    case 33:\n        msg.payload = \"Silná prachová búrka – znížila sa\";\n        break;\n    case 34:\n        msg.payload = \"Silná prachová búrka – žiadna výrazná zmena\";\n        break;\n    case 35:\n        msg.payload = \"Silná prachová búrka - začala alebo sa zvýšila\";\n        break;\n    case 36:\n        msg.payload = \"Slabo alebo mierne fúkajúci sneh vo všeobecnosti nízko\";\n        break;\n    case 37:\n        msg.payload = \"Ťažký nános snehu\";\n        break;\n    case 38:\n        msg.payload = \"Slabo alebo mierne fúkané sneženie vo všeobecnosti vysoké\";\n        break;\n    case 39:\n        msg.payload = \"Ťažký sneh vo všeobecnosti vysoký\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 40:\n    case 41:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 42:\n        msg.payload = \"Hmla alebo ľadová hmla, viditeľná obloha\";\n        break;\n    case 43:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu\";\n        break;\n    case 44:\n        msg.payload = \"Hmla alebo ľadová hmla, obloha viditeľná bez výrazných zmien\";\n        break;\n    case 45:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu, žiadna výrazná zmena\";\n        break;\n    case 46:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, obloha je viditeľná alebo zhustla\";\n        break;\n    case 47:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, nevidno oblohu, alebo zhustla\";\n        break;\n    case 48:\n        msg.payload = \"Hmla, námraza, viditeľná obloha\";\n        break;\n    case 49:\n        msg.payload = \"Hmla, námraza, nevidno oblohu\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 50:\n        msg.payload = \"Mrholenie, nemrzne, prerušovane slabé\";\n        break;\n    case 51:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite slabé\";\n        break;\n    case 52:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované mierne\";\n        break;\n    case 53:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite mierne\";\n        break;\n    case 54:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované silné\";\n        break;\n    case 55:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite silné\";\n        break;\n    case 56:\n        msg.payload = \"Mrholenie, mrznutie, mierne\";\n        break;\n    case 57:\n        msg.payload = \"Mrholenie, mrznutie, mierne alebo silné\";\n        break;\n    case 58:\n        msg.payload = \"Mrholenie a dážď, mierny\";\n        break;\n    case 59:\n        msg.payload = \"Mrholenie a dážď, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 60:\n        msg.payload = \"Dážď, nemrzne, občas slabý\";\n        break;\n    case 61:\n        msg.payload = \"Dážď, nemrzne, trvalo slabý\";\n        break;\n    case 62:\n        msg.payload = \"Dážď, nemrzne, občasný mierny\";\n        break;\n    case 63:\n        msg.payload = \"Dážď, nemrzne, nepretržite mierny\";\n        break;\n    case 64:\n        msg.payload = \"Dážď, nemrznúci, občas silný\";\n        break;\n    case 65:\n        msg.payload = \"Dážď, nemrzne, nepretržite silný\";\n        break;\n    case 66:\n        msg.payload = \"Dážď, mrznutie, mierne\";\n        break;\n    case 67:\n        msg.payload = \"Dážď, mrznutie, mierny alebo silný dážď\";\n        break;\n    case 68:\n        msg.payload = \"Dážď alebo mrholenie a sneženie, mierne\";\n        break;\n    case 69:\n        msg.payload = \"Dážď alebo mrholenie a sneh, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 70:\n        msg.payload = \"Slabé občasné sneženie\";\n        break;\n    case 71:\n        msg.payload = \"Nepretržité slabé sneženie\";\n        break;\n    case 72:\n        msg.payload = \"Mierne občasné sneženie\";\n        break;\n    case 73:\n        msg.payload = \"Nepretržité mierne sneženie\";\n        break;\n    case 74:\n        msg.payload = \"Občasné sneženie\";\n        break;\n    case 75:\n        msg.payload = \"Nepretržité sneženie\";\n        break;\n    case 76:\n        msg.payload = \"Ľadové hranoly (s hmlou alebo bez hmly)\";\n        break;\n    case 77:\n        msg.payload = \"Snehové zrná (s hmlou alebo bez hmly)\";\n        break;\n    case 78:\n        msg.payload = \"Snehové kryštály (s hmlou alebo bez hmly)\";\n        break;\n    case 79:\n        msg.payload = \"Ľadové pelety\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 80:\n        msg.payload = \"Dažďové prehánky, slabé\";\n        break;\n    case 81:\n        msg.payload = \"Dažďové prehánky, mierne alebo silné\";\n        break;\n    case 82:\n        msg.payload = \"Dažďové prehánky, prudké\";\n        break;\n    case 83:\n        msg.payload = \"Prehánky dažďa a snehu zmiešané, slabé\";\n        break;\n    case 84:\n        msg.payload = \"Dažďové a snehové prehánky zmiešané, mierne alebo silné\";\n        break;\n    case 85:\n        msg.payload = \"Snehové prehánky, slabé\";\n        break;\n    case 86:\n        msg.payload = \"Snehové prehánky, stredne silné alebo silné\";\n        break;\n    case 87:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,slabé\";\n        break;\n    case 88:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,mierne alebo silné\";\n        break;\n    case 89:\n        msg.payload = \"Prehánky s krúpami, slabé\";\n        break;\n    // Add more cases here...\n    case 90:\n        msg.payload = \"Prehánky s krúpami, mierne alebo silné\";\n        break;\n    case 91:\n        msg.payload = \"Slabý dážď v čase pozorovania\";\n        break;\n    case 92:\n        msg.payload = \"Mierny alebo silný dážď v čase pozorovania\";\n        break;\n    case 93:\n        msg.payload = \"Slabé sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 94:\n        msg.payload = \"Mierne alebo silné sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 95:\n        msg.payload = \"Búrka, slabá alebo mierna, bez krúp\";\n        break;\n    case 96:\n        msg.payload = \"Búrka, slabá alebo mierna, s krúpami\";\n        break;\n    case 97:\n        msg.payload = \"Búrka, silná, bez krúp\";\n        break;\n    case 98:\n        msg.payload = \"Búrka kombinovaná s prachovou alebo piesočnou búrkou\";\n        break;\n    case 99:\n        msg.payload = \"Búrka, silná, s krúpami\";\n        break;\n    default:\n        msg.payload = \"Invalid value\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 1300,
+        "wires": [
+            [
+                "19828b87b065658f"
+            ]
+        ]
+    },
+    {
+        "id": "06153afb46a9131e",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "day7",
+        "func": "var value = msg.payload.daily.weathercode[6];\nswitch (value) {\n    case 0:\n        msg.payload = \"Slnečno\";\n        break;\n    case 1:\n        msg.payload = \"Oblaky sa vo všeobecnosti rozpúšťajú\";\n        break;\n    case 2:\n        msg.payload = \"Stav oblohy celkovo nezmenený\";\n        break;\n    case 3:\n        msg.payload = \"Oblačno\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 4:\n        msg.payload = \"Viditeľnosť znížená dymom\";\n        break;\n    case 5:\n        msg.payload = \"Hmla\";\n        break;\n    case 6:\n        msg.payload = \"Rozšírený prach vo vzduchu\";\n        break;\n    case 7:\n        msg.payload = \"Prach alebo piesok zdvihnutý vetrom\";\n        break;\n    case 8:\n        msg.payload = \"Vyvinuté víry prachu\";\n        break;\n    case 9:\n        msg.payload = \"Prachová búrka na dohľad\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 10:\n        msg.payload = \"Hmla\";\n        break;\n    case 11:\n        msg.payload = \"Známky hmly\";\n        break;\n    case 12:\n        msg.payload = \"Viac-menej súvislá hmla\";\n        break;\n    case 13:\n        msg.payload = \"Viditeľné blesky, nepočuť hromy\";\n        break;\n    case 14:\n        msg.payload = \"Zrážky na dohľad\";\n        break;\n    case 15:\n        msg.payload = \"Zrážky na dohľad (odhaduje sa viac ako 5 km) od stanice\";\n        break;\n    case 16:\n        msg.payload = \"Zrážky na dohľad, blízko stanice\";\n        break;\n    case 17:\n        msg.payload = \"Búrky, ale bez zrážok v čase pozorovania\";\n        break;\n    case 18:\n        msg.payload = \"Búrky v čase pozorovania\";\n        break;\n    case 19:\n        msg.payload = \"Lievikový oblak\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 20:\n        msg.payload = \"Mrholenie alebo sneženie\";\n        break;\n    case 21:\n        msg.payload = \"Dážď\";\n        break;\n    case 22:\n        msg.payload = \"Sneh\";\n        break;\n    case 23:\n        msg.payload = \"Dážďové a snehové alebo ľadové pelety\";\n        break;\n    case 24:\n        msg.payload = \"Mrznúce mrholenie alebo mrznúci dážď\";\n        break;\n    case 25:\n        msg.payload = \"Dažďové prehánky\";\n        break;\n    case 26:\n        msg.payload = \"Snehové prehánky alebo dážď a sneh\";\n        break;\n    case 27:\n        msg.payload = \"Prehánky s krúpami\";\n        break;\n    case 28:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 29:\n        msg.payload = \"Búrka\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 30:\n        msg.payload = \"Mierna alebo stredná prašná búrka\";\n        break;\n    case 31:\n        msg.payload = \"Mierna alebo stredná prachová búrka – žiadna znateľná zmena\";\n        break;\n    case 32:\n        msg.payload = \"Mierna alebo stredná prachová – začala alebo sa zvýšila\";\n        break;\n    case 33:\n        msg.payload = \"Silná prachová búrka – znížila sa\";\n        break;\n    case 34:\n        msg.payload = \"Silná prachová búrka – žiadna výrazná zmena\";\n        break;\n    case 35:\n        msg.payload = \"Silná prachová búrka - začala alebo sa zvýšila\";\n        break;\n    case 36:\n        msg.payload = \"Slabo alebo mierne fúkajúci sneh vo všeobecnosti nízko\";\n        break;\n    case 37:\n        msg.payload = \"Ťažký nános snehu\";\n        break;\n    case 38:\n        msg.payload = \"Slabo alebo mierne fúkané sneženie vo všeobecnosti vysoké\";\n        break;\n    case 39:\n        msg.payload = \"Ťažký sneh vo všeobecnosti vysoký\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 40:\n    case 41:\n        msg.payload = \"Hmla alebo ľadová hmla\";\n        break;\n    case 42:\n        msg.payload = \"Hmla alebo ľadová hmla, viditeľná obloha\";\n        break;\n    case 43:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu\";\n        break;\n    case 44:\n        msg.payload = \"Hmla alebo ľadová hmla, obloha viditeľná bez výrazných zmien\";\n        break;\n    case 45:\n        msg.payload = \"Hmla alebo ľadová hmla, nevidno oblohu, žiadna výrazná zmena\";\n        break;\n    case 46:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, obloha je viditeľná alebo zhustla\";\n        break;\n    case 47:\n        msg.payload = \"Začala sa hmla alebo ľadová hmla, nevidno oblohu, alebo zhustla\";\n        break;\n    case 48:\n        msg.payload = \"Hmla, námraza, viditeľná obloha\";\n        break;\n    case 49:\n        msg.payload = \"Hmla, námraza, nevidno oblohu\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 50:\n        msg.payload = \"Mrholenie, nemrzne, prerušovane slabé\";\n        break;\n    case 51:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite slabé\";\n        break;\n    case 52:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované mierne\";\n        break;\n    case 53:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite mierne\";\n        break;\n    case 54:\n        msg.payload = \"Mrholenie, nemrznúce, prerušované silné\";\n        break;\n    case 55:\n        msg.payload = \"Mrholenie, nemrzne, nepretržite silné\";\n        break;\n    case 56:\n        msg.payload = \"Mrholenie, mrznutie, mierne\";\n        break;\n    case 57:\n        msg.payload = \"Mrholenie, mrznutie, mierne alebo silné\";\n        break;\n    case 58:\n        msg.payload = \"Mrholenie a dážď, mierny\";\n        break;\n    case 59:\n        msg.payload = \"Mrholenie a dážď, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 60:\n        msg.payload = \"Dážď, nemrzne, občas slabý\";\n        break;\n    case 61:\n        msg.payload = \"Dážď, nemrzne, trvalo slabý\";\n        break;\n    case 62:\n        msg.payload = \"Dážď, nemrzne, občasný mierny\";\n        break;\n    case 63:\n        msg.payload = \"Dážď, nemrzne, nepretržite mierny\";\n        break;\n    case 64:\n        msg.payload = \"Dážď, nemrznúci, občas silný\";\n        break;\n    case 65:\n        msg.payload = \"Dážď, nemrzne, nepretržite silný\";\n        break;\n    case 66:\n        msg.payload = \"Dážď, mrznutie, mierne\";\n        break;\n    case 67:\n        msg.payload = \"Dážď, mrznutie, mierny alebo silný dážď\";\n        break;\n    case 68:\n        msg.payload = \"Dážď alebo mrholenie a sneženie, mierne\";\n        break;\n    case 69:\n        msg.payload = \"Dážď alebo mrholenie a sneh, mierny alebo silný\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 70:\n        msg.payload = \"Slabé občasné sneženie\";\n        break;\n    case 71:\n        msg.payload = \"Nepretržité slabé sneženie\";\n        break;\n    case 72:\n        msg.payload = \"Mierne občasné sneženie\";\n        break;\n    case 73:\n        msg.payload = \"Nepretržité mierne sneženie\";\n        break;\n    case 74:\n        msg.payload = \"Občasné sneženie\";\n        break;\n    case 75:\n        msg.payload = \"Nepretržité sneženie\";\n        break;\n    case 76:\n        msg.payload = \"Ľadové hranoly (s hmlou alebo bez hmly)\";\n        break;\n    case 77:\n        msg.payload = \"Snehové zrná (s hmlou alebo bez hmly)\";\n        break;\n    case 78:\n        msg.payload = \"Snehové kryštály (s hmlou alebo bez hmly)\";\n        break;\n    case 79:\n        msg.payload = \"Ľadové pelety\";\n        break;\n    //---------------------------------------------------------------------------------\n    case 80:\n        msg.payload = \"Dažďové prehánky, slabé\";\n        break;\n    case 81:\n        msg.payload = \"Dažďové prehánky, mierne alebo silné\";\n        break;\n    case 82:\n        msg.payload = \"Dažďové prehánky, prudké\";\n        break;\n    case 83:\n        msg.payload = \"Prehánky dažďa a snehu zmiešané, slabé\";\n        break;\n    case 84:\n        msg.payload = \"Dažďové a snehové prehánky zmiešané, mierne alebo silné\";\n        break;\n    case 85:\n        msg.payload = \"Snehové prehánky, slabé\";\n        break;\n    case 86:\n        msg.payload = \"Snehové prehánky, stredne silné alebo silné\";\n        break;\n    case 87:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,slabé\";\n        break;\n    case 88:\n        msg.payload = \"Prehánky zo snehových peliet alebo ľadových peliet,mierne alebo silné\";\n        break;\n    case 89:\n        msg.payload = \"Prehánky s krúpami, slabé\";\n        break;\n    // Add more cases here...\n    case 90:\n        msg.payload = \"Prehánky s krúpami, mierne alebo silné\";\n        break;\n    case 91:\n        msg.payload = \"Slabý dážď v čase pozorovania\";\n        break;\n    case 92:\n        msg.payload = \"Mierny alebo silný dážď v čase pozorovania\";\n        break;\n    case 93:\n        msg.payload = \"Slabé sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 94:\n        msg.payload = \"Mierne alebo silné sneženie alebo dážď a sneh zmiešaný alebo krupobitie\";\n        break;\n    case 95:\n        msg.payload = \"Búrka, slabá alebo mierna, bez krúp\";\n        break;\n    case 96:\n        msg.payload = \"Búrka, slabá alebo mierna, s krúpami\";\n        break;\n    case 97:\n        msg.payload = \"Búrka, silná, bez krúp\";\n        break;\n    case 98:\n        msg.payload = \"Búrka kombinovaná s prachovou alebo piesočnou búrkou\";\n        break;\n    case 99:\n        msg.payload = \"Búrka, silná, s krúpami\";\n        break;\n    default:\n        msg.payload = \"Invalid value\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 1340,
+        "wires": [
+            [
+                "fdf68f39c121a558"
+            ]
+        ]
+    },
+    {
+        "id": "8123fd61b9dbc595",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "9c8cb38c8dcc7db0",
+        "order": 4,
+        "width": 7,
+        "height": 1,
+        "name": "2",
+        "label": "{{msg.topic}}: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 850,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "0a645aeb2035d414",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "9c8cb38c8dcc7db0",
+        "order": 3,
+        "width": 7,
+        "height": 1,
+        "name": "1",
+        "label": "Dnes: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 850,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "4e918cd8fcd0bc99",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "9c8cb38c8dcc7db0",
+        "order": 5,
+        "width": 7,
+        "height": 1,
+        "name": "3",
+        "label": "{{msg.topic}}: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 850,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "c922633bbf1e7365",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "9c8cb38c8dcc7db0",
+        "order": 6,
+        "width": 7,
+        "height": 1,
+        "name": "4",
+        "label": "{{msg.topic}}: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 850,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "b4eb9a031a93ed90",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "9c8cb38c8dcc7db0",
+        "order": 7,
+        "width": 7,
+        "height": 1,
+        "name": "5",
+        "label": "{{msg.topic}}: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 850,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "19828b87b065658f",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "9c8cb38c8dcc7db0",
+        "order": 8,
+        "width": 7,
+        "height": 1,
+        "name": "6",
+        "label": "{{msg.topic}}: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 850,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "fdf68f39c121a558",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "9c8cb38c8dcc7db0",
+        "order": 9,
+        "width": 7,
+        "height": 1,
+        "name": "7",
+        "label": "{{msg.topic}}: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 850,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "9b5210abfe21c21d",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "1",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 480,
+        "y": 1140,
+        "wires": [
+            [
+                "c0969c3048a29c33"
+            ]
+        ]
+    },
+    {
+        "id": "519a2b103f365c44",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "2",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 480,
+        "y": 1180,
+        "wires": [
+            [
+                "890eaaf85c55bccc"
+            ]
+        ]
+    },
+    {
+        "id": "c0790a8e2cfccb56",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "3",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 480,
+        "y": 1220,
+        "wires": [
+            [
+                "af784b554589a3fe"
+            ]
+        ]
+    },
+    {
+        "id": "f2523224a4bee3b5",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "4",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 480,
+        "y": 1260,
+        "wires": [
+            [
+                "076a290ed8a81067"
+            ]
+        ]
+    },
+    {
+        "id": "953a52e99fa1c1e8",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "5",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 480,
+        "y": 1300,
+        "wires": [
+            [
+                "ed3ebccee7b51462"
+            ]
+        ]
+    },
+    {
+        "id": "5e9d535336b39d87",
+        "type": "moment",
+        "z": "9af91d8f5de67341",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "date",
+        "inTz": "Europe/Bratislava",
+        "adjAmount": "6",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD.MM.YYYY",
+        "locale": "en-US",
+        "output": "topic",
+        "outputType": "msg",
+        "outTz": "Europe/Bratislava",
+        "x": 480,
+        "y": 1340,
+        "wires": [
+            [
+                "06153afb46a9131e"
+            ]
+        ]
+    },
+    {
+        "id": "cfc28616e968ab53",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "541369562f1f4ba3",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktualizácia",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 490,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "5c7e1db9b398aaa2",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "function 28",
+        "func": "var d = new Date();\nmsg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 440,
+        "wires": [
+            [
+                "cfc28616e968ab53"
+            ]
+        ]
+    },
+    {
+        "id": "773fd88cddec782b",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "ba53ebc3343b3001",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktualizácia",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 450,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "8a598c77d7edab9c",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "function 29",
+        "func": "var d = new Date();\nmsg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 960,
+        "wires": [
+            [
+                "773fd88cddec782b"
+            ]
+        ]
+    },
+    {
+        "id": "93482ea286bc2f48",
+        "type": "ui_text",
+        "z": "9af91d8f5de67341",
+        "group": "9c8cb38c8dcc7db0",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktualizácia",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 430,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "82fe9ae609ccd183",
+        "type": "function",
+        "z": "9af91d8f5de67341",
+        "name": "function 30",
+        "func": "var d = new Date();\nmsg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 1420,
+        "wires": [
+            [
+                "93482ea286bc2f48"
+            ]
+        ]
+    },
+    {
+        "id": "0e70cfba237c6fb0",
+        "type": "debug",
+        "z": "9af91d8f5de67341",
+        "name": "JSON obj2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "6b4d32a7b0d0ce12",
+        "type": "debug",
+        "z": "9af91d8f5de67341",
+        "name": "JSON obj3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "1b4ae2f997558cc0",
+        "type": "ui_spacer",
+        "z": "9af91d8f5de67341",
+        "name": "spacer",
+        "group": "ba53ebc3343b3001",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "14fb68dc9edd1c27",
+        "type": "ui_spacer",
+        "z": "9af91d8f5de67341",
+        "name": "spacer",
+        "group": "541369562f1f4ba3",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "257c8bf6b9e7be36",
+        "type": "ui_spacer",
+        "z": "9af91d8f5de67341",
+        "name": "spacer",
+        "group": "9c8cb38c8dcc7db0",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "541369562f1f4ba3",
+        "type": "ui_group",
+        "name": "Východ/západ slnka",
+        "tab": "9b8de58bdec37070",
+        "order": 3,
+        "disp": true,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ba53ebc3343b3001",
+        "type": "ui_group",
+        "name": "Predpoveď teplota",
+        "tab": "9b8de58bdec37070",
+        "order": 2,
+        "disp": true,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9c8cb38c8dcc7db0",
+        "type": "ui_group",
+        "name": "Predpoveď počasia",
+        "tab": "9b8de58bdec37070",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9b8de58bdec37070",
+        "type": "ui_tab",
+        "name": "Predpoveď",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

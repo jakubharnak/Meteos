@@ -1,0 +1,690 @@
+[
+    {
+        "id": "b6b50527d1372704",
+        "type": "tab",
+        "label": "Zaznamy",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "55642baca38319d1",
+        "type": "mysql",
+        "z": "b6b50527d1372704",
+        "mydb": "12d2987da235dc1c",
+        "name": "",
+        "x": 560,
+        "y": 200,
+        "wires": [
+            [
+                "6e794da5aa55a943"
+            ]
+        ]
+    },
+    {
+        "id": "60937444d9fc59db",
+        "type": "mqtt in",
+        "z": "b6b50527d1372704",
+        "name": "",
+        "topic": "harnak/meranie/#",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "63b034cbc504e444"
+            ]
+        ]
+    },
+    {
+        "id": "63b034cbc504e444",
+        "type": "function",
+        "z": "b6b50527d1372704",
+        "name": "SQL Insert",
+        "func": "var topic = msg.topic.substring(15);\nvar a = \"INSERT INTO merania (cas, nazov, hodnota) VALUES (NOW(), '\"+ topic +\"', \" + msg.payload + \");\";\nmsg.topic = a;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "55642baca38319d1"
+            ]
+        ]
+    },
+    {
+        "id": "37c212e9701f2802",
+        "type": "inject",
+        "z": "b6b50527d1372704",
+        "name": "PREMAZANIE",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 00 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE FROM merania WHERE CAS < TIMESTAMPADD(DAY, -1, NOW());DELETE FROM zaznamTyzden WHERE CAS < TIMESTAMPADD(WEEK, -1, NOW());",
+        "x": 240,
+        "y": 180,
+        "wires": [
+            [
+                "55642baca38319d1"
+            ]
+        ]
+    },
+    {
+        "id": "533c2a836138dd1f",
+        "type": "inject",
+        "z": "b6b50527d1372704",
+        "name": "AGREGACIA",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO zaznamTyzden SELECT NOW(), NAZOV, AVG(HODNOTA) FROM merania WHERE CAS >= TIMESTAMPADD(HOUR, -1, NOW()) GROUP BY NAZOV;",
+        "x": 240,
+        "y": 140,
+        "wires": [
+            [
+                "55642baca38319d1"
+            ]
+        ]
+    },
+    {
+        "id": "a7b46e453bdca350",
+        "type": "function",
+        "z": "b6b50527d1372704",
+        "name": "Do garfu",
+        "func": "const series = [];\nconst data = [];\n\nmsg.payload.forEach(({ NAZOV, CAS, HODNOTA }) => {\n    if (!series.includes(NAZOV)) {\n        series.push(NAZOV);\n    }\n\n    const index = series.indexOf(NAZOV);\n    if (!data[index]) {\n        data[index] = [];\n    }\n\n    data[index].push({ x: CAS, y: HODNOTA });\n});\n\nconst chart = { series, data, labels: [] };\nmsg.payload = [chart];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 200,
+        "wires": [
+            [
+                "b5feb6433003ae44"
+            ]
+        ]
+    },
+    {
+        "id": "6e794da5aa55a943",
+        "type": "switch",
+        "z": "b6b50527d1372704",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": " SELECT CAS, NAZOV, ROUND(HODNOTA, 2) AS HODNOTA   FROM zaznamTyzden   WHERE NAZOV = 'teplota' AND CAS >= TIMESTAMPADD(DAY, -7, NOW())   ORDER BY CAS;",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": " SELECT CAS, NAZOV, ROUND(HODNOTA, 2) AS HODNOTA   FROM zaznamTyzden   WHERE NAZOV = 'tlak' AND CAS >= TIMESTAMPADD(DAY, -7, NOW())   ORDER BY CAS;",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": " SELECT CAS, NAZOV, ROUND(HODNOTA, 2) AS HODNOTA   FROM zaznamTyzden   WHERE NAZOV = 'vlhkost' AND CAS >= TIMESTAMPADD(DAY, -7, NOW())   ORDER BY CAS;",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": " SELECT CAS, NAZOV, ROUND(HODNOTA, 2) AS HODNOTA   FROM zaznamTyzden   WHERE NAZOV = 'vietor' AND CAS >= TIMESTAMPADD(DAY, -7, NOW())   ORDER BY CAS;",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": " SELECT CAS, NAZOV, ROUND(HODNOTA, 2) AS HODNOTA   FROM zaznamTyzden   WHERE NAZOV = 'bateria' AND CAS >= TIMESTAMPADD(DAY, -7, NOW())   ORDER BY CAS;",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 710,
+        "y": 220,
+        "wires": [
+            [
+                "a7b46e453bdca350"
+            ],
+            [
+                "62dc12b140e57987"
+            ],
+            [
+                "54759b74de51cae0"
+            ],
+            [
+                "94390a24bfcec47a"
+            ],
+            [
+                "ecaf9e974f1761b0"
+            ]
+        ]
+    },
+    {
+        "id": "56deded3af46b184",
+        "type": "inject",
+        "z": "b6b50527d1372704",
+        "name": "Teplota",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": " SELECT CAS, NAZOV, ROUND(HODNOTA, 2) AS HODNOTA   FROM zaznamTyzden   WHERE NAZOV = 'teplota' AND CAS >= TIMESTAMPADD(DAY, -7, NOW())   ORDER BY CAS;",
+        "x": 240,
+        "y": 260,
+        "wires": [
+            [
+                "55642baca38319d1"
+            ]
+        ]
+    },
+    {
+        "id": "b5feb6433003ae44",
+        "type": "ui_chart",
+        "z": "b6b50527d1372704",
+        "name": "",
+        "group": "e4c76fd12f7cadff",
+        "order": 1,
+        "width": 20,
+        "height": 5,
+        "label": "Teplota ",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "DD.MM.- HH:MM",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "7",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1080,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "adc5c580de23852f",
+        "type": "inject",
+        "z": "b6b50527d1372704",
+        "name": "Vymaz grafy",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[]",
+        "payloadType": "jsonata",
+        "x": 890,
+        "y": 120,
+        "wires": [
+            [
+                "b5feb6433003ae44",
+                "99d30bf88336621c",
+                "4531fc4f80515211",
+                "3c3af8d3625e909e",
+                "4dc24014d13e444f"
+            ]
+        ]
+    },
+    {
+        "id": "62dc12b140e57987",
+        "type": "function",
+        "z": "b6b50527d1372704",
+        "name": "Do garfu",
+        "func": "const series = [];\nconst data = [];\n\nmsg.payload.forEach(({ NAZOV, CAS, HODNOTA }) => {\n    if (!series.includes(NAZOV)) {\n        series.push(NAZOV);\n    }\n\n    const index = series.indexOf(NAZOV);\n    if (!data[index]) {\n        data[index] = [];\n    }\n\n    data[index].push({ x: CAS, y: HODNOTA });\n});\n\nconst chart = { series, data, labels: [] };\nmsg.payload = [chart];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 240,
+        "wires": [
+            [
+                "99d30bf88336621c"
+            ]
+        ]
+    },
+    {
+        "id": "99d30bf88336621c",
+        "type": "ui_chart",
+        "z": "b6b50527d1372704",
+        "name": "",
+        "group": "e4c76fd12f7cadff",
+        "order": 5,
+        "width": "20",
+        "height": "5",
+        "label": "Tlak",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "DD.MM.- HH:MM",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1eb33c",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1070,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "54759b74de51cae0",
+        "type": "function",
+        "z": "b6b50527d1372704",
+        "name": "Do garfu",
+        "func": "const series = [];\nconst data = [];\n\nmsg.payload.forEach(({ NAZOV, CAS, HODNOTA }) => {\n    if (!series.includes(NAZOV)) {\n        series.push(NAZOV);\n    }\n\n    const index = series.indexOf(NAZOV);\n    if (!data[index]) {\n        data[index] = [];\n    }\n\n    data[index].push({ x: CAS, y: HODNOTA });\n});\n\nconst chart = { series, data, labels: [] };\nmsg.payload = [chart];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 280,
+        "wires": [
+            [
+                "4531fc4f80515211"
+            ]
+        ]
+    },
+    {
+        "id": "4531fc4f80515211",
+        "type": "ui_chart",
+        "z": "b6b50527d1372704",
+        "name": "",
+        "group": "e4c76fd12f7cadff",
+        "order": 5,
+        "width": "20",
+        "height": "5",
+        "label": "Vlhkosť",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "DD.MM.- HH:MM",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#37c7d2",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1080,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "94390a24bfcec47a",
+        "type": "function",
+        "z": "b6b50527d1372704",
+        "name": "Do garfu",
+        "func": "const series = [];\nconst data = [];\n\nmsg.payload.forEach(({ NAZOV, CAS, HODNOTA }) => {\n    if (!series.includes(NAZOV)) {\n        series.push(NAZOV);\n    }\n\n    const index = series.indexOf(NAZOV);\n    if (!data[index]) {\n        data[index] = [];\n    }\n\n    data[index].push({ x: CAS, y: HODNOTA });\n});\n\nconst chart = { series, data, labels: [] };\nmsg.payload = [chart];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 320,
+        "wires": [
+            [
+                "3c3af8d3625e909e"
+            ]
+        ]
+    },
+    {
+        "id": "3c3af8d3625e909e",
+        "type": "ui_chart",
+        "z": "b6b50527d1372704",
+        "name": "",
+        "group": "e4c76fd12f7cadff",
+        "order": 5,
+        "width": "20",
+        "height": "5",
+        "label": "Vietor",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "DD.MM.- HH:MM",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#8c3fd9",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1070,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ecaf9e974f1761b0",
+        "type": "function",
+        "z": "b6b50527d1372704",
+        "name": "Do garfu",
+        "func": "const series = [];\nconst data = [];\n\nmsg.payload.forEach(({ NAZOV, CAS, HODNOTA }) => {\n    if (!series.includes(NAZOV)) {\n        series.push(NAZOV);\n    }\n\n    const index = series.indexOf(NAZOV);\n    if (!data[index]) {\n        data[index] = [];\n    }\n\n    data[index].push({ x: CAS, y: HODNOTA });\n});\n\nconst chart = { series, data, labels: [] };\nmsg.payload = [chart];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 360,
+        "wires": [
+            [
+                "4dc24014d13e444f"
+            ]
+        ]
+    },
+    {
+        "id": "4dc24014d13e444f",
+        "type": "ui_chart",
+        "z": "b6b50527d1372704",
+        "name": "",
+        "group": "e4c76fd12f7cadff",
+        "order": 5,
+        "width": "20",
+        "height": "5",
+        "label": "Batéria",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "DD.MM.- HH:MM",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#f9b41f",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1080,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9aa85e3284913e00",
+        "type": "inject",
+        "z": "b6b50527d1372704",
+        "name": "Vlhkost",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": " SELECT CAS, NAZOV, ROUND(HODNOTA, 2) AS HODNOTA   FROM zaznamTyzden   WHERE NAZOV = 'vlhkost' AND CAS >= TIMESTAMPADD(DAY, -7, NOW())   ORDER BY CAS;",
+        "x": 240,
+        "y": 300,
+        "wires": [
+            [
+                "55642baca38319d1"
+            ]
+        ]
+    },
+    {
+        "id": "88ceab2c82593165",
+        "type": "inject",
+        "z": "b6b50527d1372704",
+        "name": "Tlak",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": " SELECT CAS, NAZOV, ROUND(HODNOTA, 2) AS HODNOTA   FROM zaznamTyzden   WHERE NAZOV = 'tlak' AND CAS >= TIMESTAMPADD(DAY, -7, NOW())   ORDER BY CAS;",
+        "x": 230,
+        "y": 340,
+        "wires": [
+            [
+                "55642baca38319d1"
+            ]
+        ]
+    },
+    {
+        "id": "7f6bd4e5bd6e0922",
+        "type": "inject",
+        "z": "b6b50527d1372704",
+        "name": "Vietor",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": " SELECT CAS, NAZOV, ROUND(HODNOTA, 2) AS HODNOTA   FROM zaznamTyzden   WHERE NAZOV = 'vietor' AND CAS >= TIMESTAMPADD(DAY, -7, NOW())   ORDER BY CAS;",
+        "x": 240,
+        "y": 380,
+        "wires": [
+            [
+                "55642baca38319d1"
+            ]
+        ]
+    },
+    {
+        "id": "521c79a0dc2dcf81",
+        "type": "inject",
+        "z": "b6b50527d1372704",
+        "name": "Bateria",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": " SELECT CAS, NAZOV, ROUND(HODNOTA, 2) AS HODNOTA   FROM zaznamTyzden   WHERE NAZOV = 'bateria' AND CAS >= TIMESTAMPADD(DAY, -7, NOW())   ORDER BY CAS;",
+        "x": 240,
+        "y": 420,
+        "wires": [
+            [
+                "55642baca38319d1"
+            ]
+        ]
+    },
+    {
+        "id": "12d2987da235dc1c",
+        "type": "MySQLdatabase",
+        "name": "Merania",
+        "host": "192.168.1.48",
+        "port": "3306",
+        "db": "PROJEKTSTANICA",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "e1b8bab7775744ae",
+        "type": "mqtt-broker",
+        "name": "server",
+        "broker": "192.168.1.48",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e4c76fd12f7cadff",
+        "type": "ui_group",
+        "name": "Grafy",
+        "tab": "d0ffe475ec4bdc33",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d0ffe475ec4bdc33",
+        "type": "ui_tab",
+        "name": "Záznam",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    }
+]
