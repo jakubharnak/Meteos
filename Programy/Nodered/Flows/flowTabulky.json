@@ -1,0 +1,710 @@
+[
+    {
+        "id": "fe601af53536d7d6",
+        "type": "tab",
+        "label": "Tabulky",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8a430477abf4013f",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/teplota",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 480,
+        "wires": [
+            [
+                "a26cf95ae8e0a27b"
+            ]
+        ]
+    },
+    {
+        "id": "185b09125bec5bd7",
+        "type": "http request",
+        "z": "fe601af53536d7d6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdk_h3lT4UD4yfmD9Gi33yn2et30WXecgRc6MoT4oowZ6VXvQ/formResponse?usp=pp_url&entry.973978673={{payload.temp}}&entry.1638128160={{payload.humi}}&entry.1449458401={{payload.pres}}&entry.644881752={{payload.air}}&entry.507539790={{payload.wind}}&entry.1999420241={{payload.batt}}&entry.347715859={{payload.rain}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6020befdbe9ad01e",
+        "type": "comment",
+        "z": "fe601af53536d7d6",
+        "name": "Linky na formulare",
+        "info": "#link teplota\nhttps://docs.google.com/forms/d/e/1FAIpQLSf-QKHK1G9ze2frQhlHvhFYbO-YDmbDsaOUFDBUgFPHXmMiCg/formResponse?usp=pp_url&entry.392422892={{payload.temp}}\n#link vlhkost\nhttps://docs.google.com/forms/d/e/1FAIpQLSf1eA1ymsL8IDTLEa1dfT7WXkNtfNwkCRa3x2Yu3rdQ99Gesg/formResponse?usp=pp_url&entry.541837772={{payload.humi}}\n#link tlak\nhttps://docs.google.com/forms/d/e/1FAIpQLScLGFlFxr1l3nse7Bx9fpM8s8pg9gTNu8uBN8N1erEWfgSOXg/formResponse?usp=pp_url&entry.1118523858={{payload.pres}}\n#link vietor\nhttps://docs.google.com/forms/d/e/1FAIpQLSdbyDc5WT1PJsrCp72vE8h8_1dj9DUHuiz6_VCJXGK0y-hjYA/formResponse?usp=pp_url&entry.1244675966={{payload.wind}}\n#link dazd\nhttps://docs.google.com/forms/d/e/1FAIpQLScZyDuPQP3n1UZ7LGdCkDgKcRrRpo1z0Q9Zd9weTs4EC2kR9Q/formResponse?usp=pp_url&entry.1377809606={{payload.rain}}\n#link vsetko\nhttps://docs.google.com/forms/d/e/1FAIpQLSdk_h3lT4UD4yfmD9Gi33yn2et30WXecgRc6MoT4oowZ6VXvQ/formResponse?usp=pp_url&entry.973978673={{payload.temp}}&entry.1638128160={{payload.humi}}&entry.1449458401={{payload.pres}}&entry.644881752={{payload.air}}&entry.507539790={{payload.wind}}&entry.1999420241={{payload.batt}}&entry.347715859={{payload.rain}}\npayload.rain",
+        "x": 250,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a26cf95ae8e0a27b",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "TempAll",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.temp = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 480,
+        "wires": [
+            [
+                "185b09125bec5bd7"
+            ]
+        ]
+    },
+    {
+        "id": "e1e3f9486c72e985",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/vlhkost",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 540,
+        "wires": [
+            [
+                "ab3e859163563c27"
+            ]
+        ]
+    },
+    {
+        "id": "ab3e859163563c27",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "HumiAll",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.humi = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 540,
+        "wires": [
+            [
+                "185b09125bec5bd7"
+            ]
+        ]
+    },
+    {
+        "id": "f0393350f3a16419",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/tlak",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 600,
+        "wires": [
+            [
+                "e8f7988e0dccf48a"
+            ]
+        ]
+    },
+    {
+        "id": "e8f7988e0dccf48a",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "PresAll",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.pres = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 600,
+        "wires": [
+            [
+                "185b09125bec5bd7"
+            ]
+        ]
+    },
+    {
+        "id": "0d59078a4eac4df1",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/vzduch",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 660,
+        "wires": [
+            [
+                "7baa2407dbfddd77"
+            ]
+        ]
+    },
+    {
+        "id": "7baa2407dbfddd77",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "AirAll",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.air = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 660,
+        "wires": [
+            [
+                "185b09125bec5bd7"
+            ]
+        ]
+    },
+    {
+        "id": "f1ae594c15de0d67",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/vietor",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 720,
+        "wires": [
+            [
+                "902b36962340a332"
+            ]
+        ]
+    },
+    {
+        "id": "902b36962340a332",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "WindAll",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.wind = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 720,
+        "wires": [
+            [
+                "185b09125bec5bd7"
+            ]
+        ]
+    },
+    {
+        "id": "c63fafb8012b0e10",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/bateria",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 780,
+        "wires": [
+            [
+                "9207548877a0e902"
+            ]
+        ]
+    },
+    {
+        "id": "9207548877a0e902",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "BattAll",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.batt = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 780,
+        "wires": [
+            [
+                "185b09125bec5bd7"
+            ]
+        ]
+    },
+    {
+        "id": "12d6ef765b7f3f16",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/dazd",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 840,
+        "wires": [
+            [
+                "de6a74a6ab690bc7"
+            ]
+        ]
+    },
+    {
+        "id": "de6a74a6ab690bc7",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "RainAll",
+        "func": "var hodnota = msg.payload\nvar text\nif (hodnota === 0) {\n    text = \"Prší\";\n} else if (hodnota === 1) {\n    text = \"Neprší\";\n} else {\n    text = \"Invalid value\";\n}\nvar data = {}\ndata.rain = text\n\nmsg.payload = data\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 840,
+        "wires": [
+            [
+                "185b09125bec5bd7"
+            ]
+        ]
+    },
+    {
+        "id": "35243639a03a64c5",
+        "type": "ui_template",
+        "z": "fe601af53536d7d6",
+        "group": "37af1d7228111c30",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n.my-buttonALL {\nbackground-color: #097479;\ncolor: white;\nborder: none;\nborder-radius: 10px;\npadding: 8px 12px;\nmargin-top: 15px;\nfont-size: 16px;\ncursor: pointer;\n}\n.my-buttonFirst {\nbackground-color: #097479;\ncolor: white;\nborder: none;\nborder-radius: 10px;\npadding: 8px 12px;\nmargin-top: 5px;\nfont-size: 16px;\ncursor: pointer;\n}\n.my-buttonLast {\nbackground-color: #097479;\ncolor: white;\nborder: none;\nborder-radius: 10px;\npadding: 8px 12px;\nmargin-top: 15px;\nmargin-bottom: 2px;\nfont-size: 16px;\ncursor: pointer;\n}\n\n</style>\n<button class=\"my-buttonFirst\" onclick=\"window.open('https://docs.google.com/spreadsheets/d/1t0_9Q-Ywm2XUPFOg1NpzvB1o7HXPd1wIcNjutGqVoqk/edit?usp=sharing')\">tabulka teploty</button>\n<button class=\"my-buttonALL\" onclick=\"window.open('https://docs.google.com/spreadsheets/d/1rsLdeLh5YJMxgMsxA8Leei7xdHp774X-CVE6z4ElMJo/edit?usp=sharing')\">tabulka vlhkosti</button>\n<button class=\"my-buttonALL\" onclick=\"window.open('https://docs.google.com/spreadsheets/d/1Zcv7ICRWfJkmhvO3emS8bvziF_E26Hg19DjbcTOrB5o/edit?usp=sharing')\">tabulka tlaku</button>\n<button class=\"my-buttonALL\" onclick=\"window.open('https://docs.google.com/spreadsheets/d/1UWyZK3cm1MtEt4vT8XxZxyVH_ON7g3tWNEkhoDz-wcQ/edit?usp=sharing')\">tabulka vetra</button>\n<button class=\"my-buttonALL\" onclick=\"window.open('https://docs.google.com/spreadsheets/d/1L2P2GT1fOr7E_W134UIhdvIAo1BRBJZXXAtozO0i6VQ/edit?usp=sharing')\">tabulka batérie</button>\n<button class=\"my-buttonLast\" onclick=\"window.open('https://docs.google.com/spreadsheets/d/1ToamcagEw64YYurRNxa0cvUZzKHj9Z5oVXsPotiOduM/edit?usp=sharing')\">tabulka všetkých hodnôt</button>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 220,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fa4f3043620cce32",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/teplota",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "582fd92daef4e5fe"
+            ]
+        ]
+    },
+    {
+        "id": "e97fb5632da8c17d",
+        "type": "http request",
+        "z": "fe601af53536d7d6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSf-QKHK1G9ze2frQhlHvhFYbO-YDmbDsaOUFDBUgFPHXmMiCg/formResponse?usp=pp_url&entry.392422892={{payload.temp}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "582fd92daef4e5fe",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "Temp",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.temp = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "e97fb5632da8c17d"
+            ]
+        ]
+    },
+    {
+        "id": "a5ca8e0574131bc0",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/vlhkost",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 240,
+        "wires": [
+            [
+                "bc8cd0e5942f68b4"
+            ]
+        ]
+    },
+    {
+        "id": "bc8cd0e5942f68b4",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "Humi",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.humi = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "9c4bb823af6241e2"
+            ]
+        ]
+    },
+    {
+        "id": "57d39d0c38dcb7ee",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/tlak",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 280,
+        "wires": [
+            [
+                "b38251821717cd06"
+            ]
+        ]
+    },
+    {
+        "id": "b38251821717cd06",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "Pres",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.pres = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 280,
+        "wires": [
+            [
+                "582ae9cbdb616171"
+            ]
+        ]
+    },
+    {
+        "id": "c87ce838fb8068fa",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/vietor",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "f25a0dadf3ff09ad"
+            ]
+        ]
+    },
+    {
+        "id": "f25a0dadf3ff09ad",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "Wind",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.wind = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "227a9396d5de210d"
+            ]
+        ]
+    },
+    {
+        "id": "4cdd9ff25a9cce33",
+        "type": "http request",
+        "z": "fe601af53536d7d6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLScZyDuPQP3n1UZ7LGdCkDgKcRrRpo1z0Q9Zd9weTs4EC2kR9Q/formResponse?usp=pp_url&entry.1377809606={{payload.batt}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "227a9396d5de210d",
+        "type": "http request",
+        "z": "fe601af53536d7d6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdbyDc5WT1PJsrCp72vE8h8_1dj9DUHuiz6_VCJXGK0y-hjYA/formResponse?usp=pp_url&entry.1244675966={{payload.wind}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "582ae9cbdb616171",
+        "type": "http request",
+        "z": "fe601af53536d7d6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLScLGFlFxr1l3nse7Bx9fpM8s8pg9gTNu8uBN8N1erEWfgSOXg/formResponse?usp=pp_url&entry.1118523858={{payload.pres}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c4bb823af6241e2",
+        "type": "http request",
+        "z": "fe601af53536d7d6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSf1eA1ymsL8IDTLEa1dfT7WXkNtfNwkCRa3x2Yu3rdQ99Gesg/formResponse?usp=pp_url&entry.541837772={{payload.humi}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "778097f3d5b07f9a",
+        "type": "comment",
+        "z": "fe601af53536d7d6",
+        "name": "Linky na tabulky",
+        "info": "#1\nhttps://docs.google.com/spreadsheets/d/1t0_9Q-Ywm2XUPFOg1NpzvB1o7HXPd1wIcNjutGqVoqk/edit?usp=sharing\n#2\nhttps://docs.google.com/spreadsheets/d/1rsLdeLh5YJMxgMsxA8Leei7xdHp774X-CVE6z4ElMJo/edit?usp=sharing\n#3\nhttps://docs.google.com/spreadsheets/d/1Zcv7ICRWfJkmhvO3emS8bvziF_E26Hg19DjbcTOrB5o/edit?usp=sharing\n#4\nhttps://docs.google.com/spreadsheets/d/1UWyZK3cm1MtEt4vT8XxZxyVH_ON7g3tWNEkhoDz-wcQ/edit?usp=sharing\n#5\nhttps://docs.google.com/spreadsheets/d/1L2P2GT1fOr7E_W134UIhdvIAo1BRBJZXXAtozO0i6VQ/edit?usp=sharing\n#all\nhttps://docs.google.com/spreadsheets/d/1ToamcagEw64YYurRNxa0cvUZzKHj9Z5oVXsPotiOduM/edit?usp=sharing",
+        "x": 440,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "07094daba1927fba",
+        "type": "function",
+        "z": "fe601af53536d7d6",
+        "name": "BattAll",
+        "func": "var hodnota = msg.payload\nvar data = {}\ndata.batt = hodnota \n\nmsg.payload = data \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 360,
+        "wires": [
+            [
+                "4cdd9ff25a9cce33"
+            ]
+        ]
+    },
+    {
+        "id": "c7a74cae470948b6",
+        "type": "mqtt in",
+        "z": "fe601af53536d7d6",
+        "name": "mqtt",
+        "topic": "harnak/meranie/bateria",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "07094daba1927fba"
+            ]
+        ]
+    },
+    {
+        "id": "e1b8bab7775744ae",
+        "type": "mqtt-broker",
+        "name": "server",
+        "broker": "192.168.1.48",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "37af1d7228111c30",
+        "type": "ui_group",
+        "name": "Prístup k tabulkám",
+        "tab": "c7cd12ea91ee7f3a",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c7cd12ea91ee7f3a",
+        "type": "ui_tab",
+        "name": "Tabulky",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]

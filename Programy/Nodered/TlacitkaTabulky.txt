@@ -1,0 +1,40 @@
+<style>
+.my-buttonALL {
+background-color: #097479;
+color: white;
+border: none;
+border-radius: 10px;
+padding: 8px 12px;
+margin-top: 15px;
+font-size: 16px;
+cursor: pointer;
+}
+.my-buttonFirst {
+background-color: #097479;
+color: white;
+border: none;
+border-radius: 10px;
+padding: 8px 12px;
+margin-top: 5px;
+font-size: 16px;
+cursor: pointer;
+}
+.my-buttonLast {
+background-color: #097479;
+color: white;
+border: none;
+border-radius: 10px;
+padding: 8px 12px;
+margin-top: 15px;
+margin-bottom: 2px;
+font-size: 16px;
+cursor: pointer;
+}
+
+</style>
+<button class="my-buttonFirst" onclick="window.open('https://docs.google.com/spreadsheets/d/1t0_9Q-Ywm2XUPFOg1NpzvB1o7HXPd1wIcNjutGqVoqk/edit?usp=sharing')">tabulka teploty</button>
+<button class="my-buttonALL" onclick="window.open('https://docs.google.com/spreadsheets/d/1rsLdeLh5YJMxgMsxA8Leei7xdHp774X-CVE6z4ElMJo/edit?usp=sharing')">tabulka vlhkosti</button>
+<button class="my-buttonALL" onclick="window.open('https://docs.google.com/spreadsheets/d/1Zcv7ICRWfJkmhvO3emS8bvziF_E26Hg19DjbcTOrB5o/edit?usp=sharing')">tabulka tlaku</button>
+<button class="my-buttonALL" onclick="window.open('https://docs.google.com/spreadsheets/d/1UWyZK3cm1MtEt4vT8XxZxyVH_ON7g3tWNEkhoDz-wcQ/edit?usp=sharing')">tabulka vetra</button>
+<button class="my-buttonALL" onclick="window.open('https://docs.google.com/spreadsheets/d/1L2P2GT1fOr7E_W134UIhdvIAo1BRBJZXXAtozO0i6VQ/edit?usp=sharing')">tabulka dažďa</button>
+<button class="my-buttonLast" onclick="window.open('https://docs.google.com/spreadsheets/d/1ToamcagEw64YYurRNxa0cvUZzKHj9Z5oVXsPotiOduM/edit?usp=sharing')">tabulka všetkých hodnôt</button>

@@ -1,0 +1,1255 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Merania",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9ef0163fc1068e3f",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "mqtt",
+        "topic": "harnak/meranie/#",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1b8bab7775744ae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 360,
+        "wires": [
+            [
+                "6484d760a7b6a508",
+                "63cdb9a3cba05ac5"
+            ]
+        ]
+    },
+    {
+        "id": "a6b449eb6e857069",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "Teplota",
+        "group": "e05cd9ccf8aec223",
+        "order": 1,
+        "width": 7,
+        "height": 3,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "{{value | number:1}} °C",
+        "min": "-20",
+        "max": "40",
+        "colors": [
+            "#6edddb",
+            "#45ce3b",
+            "#ca3838"
+        ],
+        "seg1": "18",
+        "seg2": "28",
+        "className": "",
+        "x": 800,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b35c5b99afa452b8",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "Teplota",
+        "group": "e05cd9ccf8aec223",
+        "order": 3,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 800,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6484d760a7b6a508",
+        "type": "switch",
+        "z": "f6f2187d.f17ca8",
+        "name": "Temy",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "harnak/meranie/teplota",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "harnak/meranie/tlak",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "harnak/meranie/vlhkost",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "harnak/meranie/bateria",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "harnak/meranie/vzduch",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "harnak/meranie/dazd",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "harnak/meranie/vietor",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 7,
+        "x": 510,
+        "y": 360,
+        "wires": [
+            [
+                "a6b449eb6e857069",
+                "b35c5b99afa452b8",
+                "311299a8f6048d6d",
+                "2d8f4dfdf19cbeaa",
+                "9f758f39d9a63657"
+            ],
+            [
+                "496f0c022c99efee",
+                "77fc045b04bacdd2",
+                "9e627e41c6b2afbe"
+            ],
+            [
+                "071c5080a1d0d496",
+                "ad6f21ce8252eb72",
+                "a597bcb4a36be99b"
+            ],
+            [
+                "35973c3b064425d9",
+                "2795ca99e0d27c56",
+                "188809a28fb3c83a",
+                "9d1dbe5ed30c52a3"
+            ],
+            [
+                "82a1b8bfc8e0528a",
+                "e3c2509ba6345d01",
+                "b4e55cd54444709f"
+            ],
+            [
+                "7b450e5e9dd45918",
+                "caeda533d4704cab"
+            ],
+            [
+                "5adfdff5b30b5334",
+                "7c173ee1d41afeed",
+                "7d1c574920736392"
+            ]
+        ]
+    },
+    {
+        "id": "496f0c022c99efee",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "Tlak",
+        "group": "50653735dd30c927",
+        "order": 3,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#c42ce2",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 790,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "77fc045b04bacdd2",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "Tlak",
+        "group": "50653735dd30c927",
+        "order": 1,
+        "width": 7,
+        "height": 3,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "{{value | number:0}} hPa",
+        "min": "900",
+        "max": "1100",
+        "colors": [
+            "#00b500",
+            "#e69100",
+            "#ca3838"
+        ],
+        "seg1": "975",
+        "seg2": "1050",
+        "className": "",
+        "x": 790,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "071c5080a1d0d496",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "Vlhkost",
+        "group": "80bfd8f9677af559",
+        "order": 1,
+        "width": 7,
+        "height": 3,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "{{value | number:0}} %",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#67a3da",
+            "#67a3da",
+            "#67a3da"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 800,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ad6f21ce8252eb72",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "Vlhkost",
+        "group": "80bfd8f9677af559",
+        "order": 3,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#bde3ff",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 800,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2795ca99e0d27c56",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "Bateria",
+        "group": "cf260d71033062b6",
+        "order": 1,
+        "width": 7,
+        "height": 3,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "{{value | number:0}} %",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#da1616",
+            "#e6b400",
+            "#3ccb3a"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 800,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "35973c3b064425d9",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "Bateria",
+        "group": "cf260d71033062b6",
+        "order": 3,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#e6a2ca",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 800,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "63cdb9a3cba05ac5",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "Hodnoty MQTT",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "82a1b8bfc8e0528a",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "Kvalita vzduchu",
+        "group": "583a63c8fa90dcf8",
+        "order": 1,
+        "width": 7,
+        "height": 3,
+        "gtype": "gage",
+        "title": "",
+        "label": "?",
+        "format": "{{value | number:1}} ",
+        "min": 0,
+        "max": "3000",
+        "colors": [
+            "#c29005",
+            "#07c088",
+            "#3acb4a"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 820,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "e3c2509ba6345d01",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "Kvalita vzduchu",
+        "group": "583a63c8fa90dcf8",
+        "order": 3,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 820,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "383eee72a22ca0be",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Vymaz grafy",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[]",
+        "payloadType": "jsonata",
+        "x": 490,
+        "y": 200,
+        "wires": [
+            [
+                "b35c5b99afa452b8",
+                "496f0c022c99efee",
+                "ad6f21ce8252eb72",
+                "35973c3b064425d9",
+                "e3c2509ba6345d01",
+                "7c173ee1d41afeed"
+            ]
+        ]
+    },
+    {
+        "id": "7b450e5e9dd45918",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Dazd",
+        "func": "var value = msg.payload;\nif (value === 0) {\n    msg.payload = \"Prší\";\n} else if (value === 1) {\n    msg.payload = \"Neprší\";\n} else {\n    msg.payload = \"Invalid value\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 580,
+        "wires": [
+            [
+                "e076217f7e3ffa17"
+            ]
+        ]
+    },
+    {
+        "id": "b5e71c219a6cc05d",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "599fe1ddb35c2ed5",
+        "order": 2,
+        "width": 7,
+        "height": 2,
+        "name": "Prsi/Snezi/Neprsi",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 1710,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "5adfdff5b30b5334",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "Vietor",
+        "group": "b0a83716f1aa0d01",
+        "order": 1,
+        "width": 7,
+        "height": 3,
+        "gtype": "gage",
+        "title": "",
+        "label": "km/h",
+        "format": "{{value}} km/h",
+        "min": 0,
+        "max": "150",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 790,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "7c173ee1d41afeed",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "Vietor",
+        "group": "b0a83716f1aa0d01",
+        "order": 3,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 790,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "288da6467e0dbf7e",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "e05cd9ccf8aec223",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktualizácia",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "311299a8f6048d6d",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Aktual1",
+        "func": "var d = new Date();\nmsg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 200,
+        "wires": [
+            [
+                "288da6467e0dbf7e"
+            ]
+        ]
+    },
+    {
+        "id": "e076217f7e3ffa17",
+        "type": "switch",
+        "z": "f6f2187d.f17ca8",
+        "name": "Prsi/Neprsi",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Prší",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Neprší",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1310,
+        "y": 580,
+        "wires": [
+            [
+                "2d8f4dfdf19cbeaa"
+            ],
+            [
+                "b5e71c219a6cc05d",
+                "64bc922673c43c5e"
+            ]
+        ]
+    },
+    {
+        "id": "2d8f4dfdf19cbeaa",
+        "type": "switch",
+        "z": "f6f2187d.f17ca8",
+        "name": "Prsi/Snezi",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "-1",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "-1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 1380,
+        "y": 500,
+        "wires": [
+            [
+                "d84ebb8633afb0ed"
+            ],
+            [],
+            [
+                "b5e71c219a6cc05d",
+                "64bc922673c43c5e"
+            ]
+        ]
+    },
+    {
+        "id": "d84ebb8633afb0ed",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Snezi",
+        "func": "var value = msg.payload;\nif (value <= -1){\n    msg.payload = \"Sneží\";\n} else {\n    msg.payload = \"Invalid value\";\n}\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 480,
+        "wires": [
+            [
+                "b5e71c219a6cc05d",
+                "64bc922673c43c5e"
+            ]
+        ]
+    },
+    {
+        "id": "84b11972180577ec",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "50653735dd30c927",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktualizácia",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "9e627e41c6b2afbe",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Aktual1",
+        "func": "var d = new Date();\nmsg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 280,
+        "wires": [
+            [
+                "84b11972180577ec"
+            ]
+        ]
+    },
+    {
+        "id": "d467cfe92b6b0d9d",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "80bfd8f9677af559",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktualizácia",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "a597bcb4a36be99b",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Aktual1",
+        "func": "var d = new Date();\nmsg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 360,
+        "wires": [
+            [
+                "d467cfe92b6b0d9d"
+            ]
+        ]
+    },
+    {
+        "id": "5e4e61b07086c140",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "cf260d71033062b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktualizácia",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "188809a28fb3c83a",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Aktual1",
+        "func": "var d = new Date();\nmsg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 440,
+        "wires": [
+            [
+                "5e4e61b07086c140"
+            ]
+        ]
+    },
+    {
+        "id": "bc1cd0f3547eddea",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "583a63c8fa90dcf8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktualizácia",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1170,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "b4e55cd54444709f",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Aktual1",
+        "func": "var d = new Date();\nmsg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 520,
+        "wires": [
+            [
+                "bc1cd0f3547eddea"
+            ]
+        ]
+    },
+    {
+        "id": "bf34e4ee022e11cc",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "b0a83716f1aa0d01",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktualizácia",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1110,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "7d1c574920736392",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Aktual1",
+        "func": "var d = new Date();\nmsg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 640,
+        "wires": [
+            [
+                "bf34e4ee022e11cc"
+            ]
+        ]
+    },
+    {
+        "id": "b236fddbd1e6187f",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "599fe1ddb35c2ed5",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktualizácia",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "caeda533d4704cab",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Aktual1",
+        "func": "var d = new Date();\nmsg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 600,
+        "wires": [
+            [
+                "b236fddbd1e6187f"
+            ]
+        ]
+    },
+    {
+        "id": "c7a87b4eb87d5b3d",
+        "type": "ui_toast",
+        "z": "f6f2187d.f17ca8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "RED",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "Notifikacia Bateria",
+        "x": 1710,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "da2ca263553626d1",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "Batéria je takmer vybitá",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Batéria je takmer vybitá",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1470,
+        "y": 400,
+        "wires": [
+            [
+                "c7a87b4eb87d5b3d"
+            ]
+        ]
+    },
+    {
+        "id": "9d1dbe5ed30c52a3",
+        "type": "switch",
+        "z": "f6f2187d.f17ca8",
+        "name": "Kapacita bateria < 40",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "40",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1220,
+        "y": 400,
+        "wires": [
+            [
+                "da2ca263553626d1"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "64bc922673c43c5e",
+        "type": "ui_toast",
+        "z": "f6f2187d.f17ca8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "RED",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "Notifikacia Dazd",
+        "x": 1700,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "9f758f39d9a63657",
+        "type": "switch",
+        "z": "f6f2187d.f17ca8",
+        "name": "Teplota > 35",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "35",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1190,
+        "y": 240,
+        "wires": [
+            [
+                "02065fe0886e05f5"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "02065fe0886e05f5",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "Vonku je veľmi teplo ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Upozornenie na vysokú teplotu",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1460,
+        "y": 240,
+        "wires": [
+            [
+                "1487c685393b369e"
+            ]
+        ]
+    },
+    {
+        "id": "1487c685393b369e",
+        "type": "ui_toast",
+        "z": "f6f2187d.f17ca8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "RED",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "Notifikacia Teplota",
+        "x": 1710,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "e1b8bab7775744ae",
+        "type": "mqtt-broker",
+        "name": "server",
+        "broker": "192.168.1.48",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e05cd9ccf8aec223",
+        "type": "ui_group",
+        "name": "Teplota",
+        "tab": "e9f2253fe251edae",
+        "order": 1,
+        "disp": true,
+        "width": 7,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "50653735dd30c927",
+        "type": "ui_group",
+        "name": "Tlak",
+        "tab": "e9f2253fe251edae",
+        "order": 2,
+        "disp": true,
+        "width": 7,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "80bfd8f9677af559",
+        "type": "ui_group",
+        "name": "Vlhkosť",
+        "tab": "e9f2253fe251edae",
+        "order": 3,
+        "disp": true,
+        "width": 7,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "cf260d71033062b6",
+        "type": "ui_group",
+        "name": "Batéria",
+        "tab": "e9f2253fe251edae",
+        "order": 4,
+        "disp": true,
+        "width": 7,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "583a63c8fa90dcf8",
+        "type": "ui_group",
+        "name": "Kvalita vzduchu ",
+        "tab": "e9f2253fe251edae",
+        "order": 5,
+        "disp": true,
+        "width": 7,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "599fe1ddb35c2ed5",
+        "type": "ui_group",
+        "name": "Dážď",
+        "tab": "e9f2253fe251edae",
+        "order": 7,
+        "disp": true,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b0a83716f1aa0d01",
+        "type": "ui_group",
+        "name": "Vietor",
+        "tab": "e9f2253fe251edae",
+        "order": 6,
+        "disp": true,
+        "width": 7,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e9f2253fe251edae",
+        "type": "ui_tab",
+        "name": "Merania",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

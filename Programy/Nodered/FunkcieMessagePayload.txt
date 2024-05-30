@@ -1,0 +1,59 @@
+Tieto funkcie vytvaraju novy message objekt ktory obsahuje hodnotu z mqtt. Tieto funkcie sluzia na to aby sa message objekt odoslal do tabuliek.
+----------------------------------------teplota
+var hodnota = msg.payload
+var data = {}
+data.temp = hodnota 
+
+msg.payload = data 
+return msg;
+----------------------------------------vlhkost
+var hodnota = msg.payload
+var data = {}
+data.humi = hodnota 
+
+msg.payload = data 
+return msg;
+----------------------------------------tlak
+var hodnota = msg.payload
+var data = {}
+data.pres = hodnota 
+
+msg.payload = data 
+return msg;
+----------------------------------------vietor
+var hodnota = msg.payload
+var data = {}
+data.wind = hodnota 
+
+msg.payload = data 
+return msg;
+----------------------------------------dazd
+var hodnota = msg.payload
+var text
+if (hodnota === 0) {
+    text = "Prší";
+} else if (hodnota === 1) {
+    text = "Neprší";
+} else {
+    text = "Invalid value";
+}
+var data = {}
+data.rain = text 
+
+msg.payload = data 
+return msg;
+----------------------------------------bateria
+var hodnota = msg.payload
+var data = {}
+data.batt = hodnota 
+
+msg.payload = data 
+return msg;
+----------------------------------------vzduch
+var hodnota = msg.payload
+var data = {}
+data.air = hodnota 
+
+msg.payload = data 
+return msg;
+

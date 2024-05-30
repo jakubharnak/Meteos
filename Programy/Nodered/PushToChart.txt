@@ -1,0 +1,34 @@
+#-Inicializuje dve prázdne polia: séria a údaje, v ktorých sa uložia série a údajové body grafu.
+
+const series = [];
+const data = [];
+
+#-Prechádza cez každú položku v poli msg.payload pomocou metódy forEach. Každá položka je objekt, ktorý obsahuje tri vlastnosti: NAZOV, CAS a HODNOTA.
+
+msg.payload.forEach(({ NAZOV, CAS, HODNOTA }) => {
+
+    #-Ak vlastnosť NAZOV ešte nie je v poli série, pridá sa pomocou metódy push.
+
+    if (!series.includes(NAZOV)) {
+        series.push(NAZOV);
+    }
+
+#-Kód potom nájde index vlastnosti NAZOV v poli série pomocou metódy indexOf.
+#-Ak dátové pole ešte nemá prvok na indexe vlastnosti NAZOV, pomocou metódy push sa pridá nové prázdne pole.
+
+    const index = series.indexOf(NAZOV);
+    if (!data[index]) {
+        data[index] = [];
+    }
+
+#-Nakoniec sa aktuálny dátový bod (pozostávajúci z vlastností CAS a HODNOTA) pridá do dátového poľa na indexe vlastnosti NAZOV.
+
+    data[index].push({ x: CAS, y: HODNOTA });
+});
+
+#-Po slučke kód vytvorí objekt grafu, ktorý obsahuje sériu, údaje a prázdne pole štítkov. Tento objekt grafu sa potom pridá do nového poľa, ktoré je priradené k msg.payload. Nakoniec sa vráti upravený objekt správy.
+
+const chart = { series, data, labels: [] };
+msg.payload = [chart];
+
+return msg;

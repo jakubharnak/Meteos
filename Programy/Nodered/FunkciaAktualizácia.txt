@@ -1,0 +1,10 @@
+#-Vytvorí nový objekt Date pomocou konštruktora Date. Toto nastaví hodnotu premennej d na aktuálny dátum a čas.
+var d = new Date();
+
+#-Formátuje dátum a čas ako reťazec pomocou metódy toLocaleString s dvoma argumentmi(formátovanie,časové pásmo)
+msg.payload = d.toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });
+
+#-Výsledný formátovaný reťazec dátumu a času je priradený k vlastnosti msg.payload.
+
+#-Nakoniec sa vráti upravený objekt správy.
+return msg;
